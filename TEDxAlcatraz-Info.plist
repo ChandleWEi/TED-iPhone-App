@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>TEDxAlcatraz</string>
+	<string>TED 2011</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
@@ -18,7 +18,7 @@
 		<string>Icon-Small@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.tedx.alcatraz</string>
+	<string>com.catchnotes.tedapp</string>
 	<key>UIPrerenderedIcon</key>
 	<false/>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -28,13 +28,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
-	<string>TEDx</string>
+	<string>CATH</string>
 	<key>CFBundleVersion</key>
-	<string>101</string>
+	<string>1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.22</string>
+	<string>1.0.0</string>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<false/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>UIStatusBarStyle</key>
@@ -48,7 +48,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>TEDxVenue</key>
+	<key>TEDVenue</key>
 	<dict>
 		<key>EventId</key>
 		<integer>13</integer>
