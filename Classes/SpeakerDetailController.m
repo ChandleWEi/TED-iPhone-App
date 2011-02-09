@@ -129,11 +129,7 @@
 	
 	[notes appendString: @"\n\n"];
 	[notes appendString: CONFERENCE_TAG];
-	[notes appendString: @" #"];
 
-	//Now Getting Speaker Name
-	NSString *speakername = [[TEDxAlcatrazGlobal nameStringFromJSONData:speakerDictionary] stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-	[notes appendString: speakername];
 	[self createCatchNoteWithText:notes];
 }
 
@@ -141,10 +137,6 @@
 	NSMutableString *tags = [NSMutableString string];
 	[tags appendString: CONFERENCE_TAG];
 	[tags appendString: @" #"];
-
-	//Now Getting Speaker Name
-	NSString *speakername = [[TEDxAlcatrazGlobal nameStringFromJSONData:speakerDictionary] stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-	[tags appendString: speakername];
 
 	[CatchNotesLauncher showNotesMatchingText:tags fromViewController:self];
 }
