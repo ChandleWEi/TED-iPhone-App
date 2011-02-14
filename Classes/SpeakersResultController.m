@@ -35,6 +35,7 @@
 #import "SpeakersResultTableViewCell.h"
 #import "SpeakerDetailController.h"
 #import "JSON.h"
+#import "WebServices.h"
 
 #define kEventId	13
 #define kPages		1
@@ -98,28 +99,17 @@
 -(void)getSpeakersInBackground {	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
+	
+	
 	NSString *requestString = [NSString stringWithFormat:
 							   @"http://www.tedxapps.com/wsdl/TEDxService.svc/GetSpeakersByEventId?eventid=%i&page=%i",
 							   [TEDxAlcatrazGlobal eventIdentifier],
 							   kPages];
 	
-	NSURLRequest *newUserURLRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:requestString]];
-	
-	//Data returned by Web Service
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-	NSData *returnData = [NSURLConnection sendSynchronousRequest:newUserURLRequest returningResponse:nil error:nil];
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	
-	NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-	
-	DLog(@"Speakers:%@", returnString);
-	
 	[speakers release];
-	speakers = [[returnString JSONValue] retain];
+	speakers = [[WebServices CallWebServiceGETArray:requestString] retain];
 	
 	[[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-	
-	[returnString release];
 	
 	[pool drain];
 }

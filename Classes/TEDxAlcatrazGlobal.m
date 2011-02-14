@@ -97,6 +97,8 @@
 	return emailAddress;
 }
 
-
++(NSInteger)eventVersion {
+	return [[NSUserDefaults standardUserDefaults] integerForKey:CONFERENCE_VERSION];
+}
 @end
 
