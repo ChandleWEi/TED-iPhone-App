@@ -33,6 +33,11 @@
 
 @interface SpeakersResultController : UITableViewController <UITabBarControllerDelegate>{
 	NSArray *speakers;
+	UISegmentedControl *switchFilter;
 }
+
+@property (nonatomic, retain) IBOutlet UISegmentedControl *switchFilter;
+
+- (IBAction)switchFilter_Clicked;
 
 @end

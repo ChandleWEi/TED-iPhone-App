@@ -15,6 +15,11 @@
 
 + (NSArray *)getSpeakersByEventWebService : (NSString *)requestString EventVersion : (NSInteger)version;
 
-+ (NSArray *)getSpeakersByEventFromCache;
++ (NSArray *)getSpeakersByEventFromCacheSortByLastName;
 
++ (NSArray *)getSpeakersByEventFromCacheSortBySession : (NSArray *)data;
+
++ (NSInteger)getRowsBySectionNumber : (NSArray *)data section : (NSInteger)Section;
+
++ (NSArray *)getSpeakersBySection : (NSArray *)data section : (NSInteger)Section;
 @end

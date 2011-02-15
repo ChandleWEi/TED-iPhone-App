@@ -63,6 +63,7 @@
 
 +(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary;
 
++(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary;
 // returns the TEDxVenue dictionary from the Info.plist, which contains the venue id, address, etc
 +(NSDictionary*)venueDictionary;
 

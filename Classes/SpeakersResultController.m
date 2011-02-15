@@ -41,8 +41,12 @@
 
 #define kEventId	13
 #define kPages		1
+#define kSessions	12
+#define SectionHeaderHeight 15
 
 @implementation SpeakersResultController
+
+@synthesize switchFilter;
 
 #pragma mark -
 
@@ -107,7 +111,7 @@
 	NSInteger eventVersion = [EventLogic getEventVersion];
 	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
 	{
-		speakers = [[EventLogic getSpeakersByEventFromCache] retain];
+		speakers = [[EventLogic getSpeakersByEventFromCacheSortByLastName] retain];
 	}
 	else {
 		NSString *requestString = [NSString stringWithFormat:
@@ -177,15 +181,61 @@
 
 #pragma mark -
 #pragma mark Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if(switchFilter.selectedSegmentIndex != 0)
+	{
+		return SectionHeaderHeight;
+	}
+	else {
+		return 0;
+	}
+
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+	switch (switchFilter.selectedSegmentIndex) {
+		case 1:
+			return kSessions;
+		default:
+			return 1;
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [speakers count];
+	switch (switchFilter.selectedSegmentIndex) {
+		case 0:
+			return [speakers count];
+		case 1:
+			return [EventLogic getRowsBySectionNumber:speakers section:section];
+		default:
+			return 1;
+	}
+
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	if(switchFilter.selectedSegmentIndex != 0)
+	{
+		NSString *sectionTitle = [NSString stringWithFormat:@"Session %d", section + 1];
+		// Create label with section title
+		UILabel *label = [[[UILabel alloc] init] autorelease];
+		label.frame = CGRectMake(0, 0, 320, 15);
+		label.backgroundColor = [UIColor grayColor];
+		label.textColor = [UIColor whiteColor];
+		label.font = [UIFont boldSystemFontOfSize:12];
+		label.text = sectionTitle;
+	
+		// Create header view and add label as a subview
+		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, SectionHeaderHeight)];
+		[view autorelease];
+		[view addSubview:label];
+	
+		return view;
+	}
+	else return nil;
 }
 
 // Customize the appearance of table view cells.
@@ -196,9 +246,18 @@
     if (cell == nil) {
         cell = [[[SpeakersResultTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-	
+	NSDictionary *speaker;
+
+	// Return the number of rows in the section.
+	switch (switchFilter.selectedSegmentIndex) {
+		case 1:
+			speaker = [[EventLogic getSpeakersBySection:speakers section:indexPath.section] objectAtIndex:[indexPath row]];
+			break;
+		default:
+			speaker = [speakers objectAtIndex:[indexPath row]];
+			break;
+	}
 	// Configure the cell...
-	NSDictionary *speaker = [speakers objectAtIndex:[indexPath row]];
 	
 	UIImage* image = [[self imageForSpeaker:speaker] retain];
 	cell.imageView.image = image;	
@@ -231,7 +290,17 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *speaker = [speakers objectAtIndex:[indexPath row]];
+	NSDictionary *speaker;
+	
+	// Return the number of rows in the section.
+	switch (switchFilter.selectedSegmentIndex) {
+		case 1:
+			speaker = [[EventLogic getSpeakersBySection:speakers section:indexPath.section] objectAtIndex:[indexPath row]];
+			break;
+		default:
+			speaker = [speakers objectAtIndex:[indexPath row]];
+			break;
+	}
 	
 	if(speaker) {
 		SpeakerDetailController *speakerDetailController = [[SpeakerDetailController alloc] initWithSpeaker:speaker];
@@ -240,6 +309,11 @@
 	}
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (IBAction)switchFilter_Clicked
+{
+	[self.tableView reloadData];
 }
 
 #pragma mark -
@@ -255,7 +329,7 @@
 
 - (void)dealloc {
 	[speakers release];
-	
+	[switchFilter release];
     [super dealloc];
 }
 
