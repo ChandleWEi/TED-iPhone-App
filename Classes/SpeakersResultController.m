@@ -36,6 +36,8 @@
 #import "SpeakerDetailController.h"
 #import "JSON.h"
 #import "WebServices.h"
+#import "TEDxAlcatrazGlobal.h"
+#import "EventLogic.h"
 
 #define kEventId	13
 #define kPages		1
@@ -98,16 +100,24 @@
 
 -(void)getSpeakersInBackground {	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	
-	
-	NSString *requestString = [NSString stringWithFormat:
-							   @"http://www.tedxapps.com/wsdl/TEDxService.svc/GetSpeakersByEventId?eventid=%i&page=%i",
-							   [TEDxAlcatrazGlobal eventIdentifier],
-							   kPages];
-	
+
 	[speakers release];
-	speakers = [[WebServices CallWebServiceGETArray:requestString] retain];
+
+
+	NSInteger eventVersion = [EventLogic getEventVersion];
+	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
+	{
+		speakers = [[EventLogic getSpeakersByEventFromCache] retain];
+	}
+	else {
+		NSString *requestString = [NSString stringWithFormat:
+								   @"http://www.tedxapps.com/wsdl/TEDxService.svc/GetSpeakersByEventId?eventid=%i&page=%i",
+								   [TEDxAlcatrazGlobal eventIdentifier],
+								   kPages];
+		
+		speakers = [[EventLogic getSpeakersByEventWebService:requestString EventVersion:eventVersion] retain];
+	}
+
 	
 	[[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 	

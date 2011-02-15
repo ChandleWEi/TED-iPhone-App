@@ -98,7 +98,7 @@
 }
 
 +(NSInteger)eventVersion {
-	return [[NSUserDefaults standardUserDefaults] integerForKey:CONFERENCE_VERSION];
+	return [[NSUserDefaults standardUserDefaults] integerForKey:EVENT_VERSION];
 }
 @end
 

@@ -62,17 +62,17 @@
 	<key>TEDVenue</key>
 	<dict>
 		<key>EventId</key>
-		<integer>13</integer>
+		<integer>19</integer>
 		<key>Name</key>
-		<string>Temple Nightclub</string>
+		<string>Long Beach Convention and Entertainment Center</string>
 		<key>Address</key>
-		<string>540 Howard Street, San Francisco, California</string>
+		<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
 		<key>Latitude</key>
-		<real>37.787835</real>
+		<real>33.765003</real>
 		<key>Longitude</key>
-		<string>-122.397067</string>
+		<string>-118.189523</string>
 		<key>EmailAddress</key>
-		<string>greg@tedxalcatraz.com</string>
+		<string>peter@catch.com</string>
 	</dict>
 </dict>
 </plist>

@@ -76,7 +76,8 @@
 
 static NSString* const CONFERENCE_TAG = @"#TED2011";
 static NSString* const WEBSERVICE_ADDRESS = @"http://www.tedxapps.com/wsdl/TEDxService.svc/";
-static NSString* const CONFERENCE_VERSION = @"Version";
-static NSString* const WEBSERVICE_GETCONFERENCEVERSION = @"BLABLABLA";
+static NSString* const EVENT_VERSION = @"Version";
+static NSString* const EVENT_SPEAKER_DATA = @"SpeakerData";
+static NSString* const WEBSERVICE_GETCONFERENCEVERSION = @"GetEventVersion";
 
 @end
