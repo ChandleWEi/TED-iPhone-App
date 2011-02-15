@@ -57,10 +57,22 @@
 	return [JSONDictionary objectForKey:@"PhotoUrl"];	
 }
 
-+(NSString*)DescriptionFromJSONData:(NSDictionary*)JSONDictionary {
++(NSString*)descriptionFromJSONData:(NSDictionary*)JSONDictionary {
 	DAssert([[JSONDictionary objectForKey:@"Description"] isKindOfClass:[NSString class]], @"Description is not a string");
 	
 	return [JSONDictionary objectForKey:@"Description"];	
+}
+
++(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"WebSite"] isKindOfClass:[NSString class]], @"Description is not a string");
+	
+	return [JSONDictionary objectForKey:@"WebSite"];	
+}
+
++(NSString*)twitterFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"Twitter"] isKindOfClass:[NSString class]], @"Description is not a string");
+	
+	return [JSONDictionary objectForKey:@"Twitter"];	
 }
 
 +(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary {

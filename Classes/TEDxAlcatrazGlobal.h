@@ -59,8 +59,12 @@
 
 +(NSString*)photoURLFromJSONData:(NSDictionary*)JSONDictionary;
 
-+(NSString*)DescriptionFromJSONData:(NSDictionary*)JSONDictionary;
++(NSString*)descriptionFromJSONData:(NSDictionary*)JSONDictionary;
 
++(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSString*)twitterFromJSONData:(NSDictionary*)JSONDictionary;
+	
 +(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary;
 
 +(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary;

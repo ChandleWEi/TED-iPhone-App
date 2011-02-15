@@ -89,6 +89,20 @@
 	return image;
 }
 
+-(NSDictionary*)getSpeakerByIndexPath:(NSIndexPath*)indexPath
+{
+	NSDictionary *speaker;
+	switch (switchFilter.selectedSegmentIndex) {
+		case 1:
+			speaker = [[EventLogic getSpeakersBySection:speakers section:indexPath.section] objectAtIndex:[indexPath row]];
+			break;
+		default:
+			speaker = [speakers objectAtIndex:[indexPath row]];
+			break;
+	}
+	return speaker;
+}
+
 -(void)setImage:(UIImage*)image forSpeaker:(NSDictionary*)speaker {
 	NSString* path = [self tempPathForSpeakerImage:speaker];
 
@@ -133,7 +147,7 @@
 	if(speakers) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		
-		NSDictionary *speaker = [speakers objectAtIndex:[indexPath row]];
+		NSDictionary *speaker = [self getSpeakerByIndexPath:indexPath];
 		
 		[self createTempPath];
 		
@@ -246,17 +260,8 @@
     if (cell == nil) {
         cell = [[[SpeakersResultTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-	NSDictionary *speaker;
+	NSDictionary *speaker = [self getSpeakerByIndexPath:indexPath];
 
-	// Return the number of rows in the section.
-	switch (switchFilter.selectedSegmentIndex) {
-		case 1:
-			speaker = [[EventLogic getSpeakersBySection:speakers section:indexPath.section] objectAtIndex:[indexPath row]];
-			break;
-		default:
-			speaker = [speakers objectAtIndex:[indexPath row]];
-			break;
-	}
 	// Configure the cell...
 	
 	UIImage* image = [[self imageForSpeaker:speaker] retain];
@@ -290,17 +295,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *speaker;
-	
-	// Return the number of rows in the section.
-	switch (switchFilter.selectedSegmentIndex) {
-		case 1:
-			speaker = [[EventLogic getSpeakersBySection:speakers section:indexPath.section] objectAtIndex:[indexPath row]];
-			break;
-		default:
-			speaker = [speakers objectAtIndex:[indexPath row]];
-			break;
-	}
+	NSDictionary *speaker = [self getSpeakerByIndexPath:indexPath];
 	
 	if(speaker) {
 		SpeakerDetailController *speakerDetailController = [[SpeakerDetailController alloc] initWithSpeaker:speaker];

@@ -125,7 +125,13 @@
 	[notes appendString: @"\nTitle:"];
 	[notes appendString: [TEDxAlcatrazGlobal titleFromJSONData:speakerDictionary]];	
 	[notes appendString: @"\nBio:"];
-	[notes appendString: [TEDxAlcatrazGlobal DescriptionFromJSONData:speakerDictionary]];
+	[notes appendString: [TEDxAlcatrazGlobal descriptionFromJSONData:speakerDictionary]];
+
+	[notes appendString: @"\n\nWebsite:"];
+	[notes appendString: [TEDxAlcatrazGlobal webSiteFromJSONData:speakerDictionary]];
+	
+	[notes appendString: @"\n\nTwitter:"];
+	[notes appendString: [TEDxAlcatrazGlobal twitterFromJSONData:speakerDictionary]];
 	
 	[notes appendString: @"\n\n"];
 	[notes appendString: CONFERENCE_TAG];
