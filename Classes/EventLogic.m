@@ -15,7 +15,7 @@
 
 + (NSUInteger)getEventVersion
 {
-	NSString *Action = WEBSERVICE_GETCONFERENCEVERSION;
+	NSString *Action = WEBSERVICE_GETEVENTVERSION;
 	
 	NSDictionary *JSONData = [NSDictionary dictionaryWithObjectsAndKeys:
 							 [NSNumber numberWithInteger:[TEDxAlcatrazGlobal eventIdentifier]],		@"EventId",						  
@@ -30,6 +30,86 @@
 	}
 	
 	return ret;
+}
+
++ (NSArray *)getEventSessionsFromWebService
+{
+	NSString *Action = WEBSERVICE_GETEVENTSESSIONBYEVENTID;
+	
+	NSDictionary *JSONData = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithInteger:[TEDxAlcatrazGlobal eventIdentifier]],		@"EventId",						  
+							  nil];
+	
+	NSDictionary *responseDictionary = [WebServices CallWebServicePOST:JSONData webService:Action];
+	
+	NSArray *ret = [[NSArray alloc] autorelease];
+	
+	if ([(NSNumber *)[responseDictionary objectForKey:@"IsSuccessful"] boolValue]) {
+		ret = [responseDictionary objectForKey:@"Sessions"];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:ret] forKey:EVENT_SESSION_DATA];
+	}
+	
+	DLog(@"EventSession:%@", ret);
+
+	
+	return ret;
+}
+
++ (NSArray *)getEventSessionsFromCache
+{
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:EVENT_SESSION_DATA];
+	NSArray *returnString = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	
+	DLog(@"EventSession:%@", returnString);
+	
+	return returnString;
+}
+
++(int)dateDiff:(NSDate*)firstday lastday:(NSDate*)lastday {
+	NSDate *startDate = firstday;
+	NSDate *endDate = lastday;
+	NSCalendar *gregorian = [[NSCalendar alloc]
+							 initWithCalendarIdentifier:NSGregorianCalendar];
+	unsigned int unitFlags = NSDayCalendarUnit;
+	NSDateComponents *components = [gregorian components:unitFlags
+												fromDate:startDate
+												  toDate:endDate options:0];
+	int days = [components day];
+	return days;
+}
+
+
++ (NSInteger)getCurrentSession:(NSArray *)sessions
+{
+	NSDate *currentTime = [NSDate date];
+	
+	NSInteger ret = 1;
+	
+	for(int i = 0; i<[sessions count]; i++)
+	{
+		if ([currentTime compare:[TEDxAlcatrazGlobal sessionTimeFromJSONData:[sessions objectAtIndex:i]]] > 0) {
+			ret = [TEDxAlcatrazGlobal sessionFromJSONData:[sessions objectAtIndex:i]];
+		}
+	}
+	
+	return ret;
+}
+
++ (NSString *)getSessionNameBySessionId:(NSInteger)session data:(NSArray *)sessions
+{
+	NSMutableString *ret = [NSMutableString stringWithFormat:@"Session %d", session];
+	
+	if(sessions != nil)
+	{
+		for (int i = 0; i < [sessions count]; i++) {
+			if (session == [TEDxAlcatrazGlobal sessionFromJSONData:[sessions objectAtIndex:i]]) {
+				[ret appendString: @": "];
+				[ret appendString: [TEDxAlcatrazGlobal sessionNameFromJSONData:[sessions objectAtIndex:i]]];
+			}
+		}
+	}
+	
+	return [NSString stringWithFormat:@"%@",ret];
 }
 
 + (NSArray *)getSpeakersByEventWebService : (NSString *)requestString EventVersion : (NSInteger)version

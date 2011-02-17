@@ -55,6 +55,8 @@
 
 +(NSString*)nameStringFromJSONData:(NSDictionary*)JSONDictonary;
 
++(NSDate*) getDateFromJSON:(NSString *)dateString;
+
 +(NSString*)titleFromJSONData:(NSDictionary*)JSONDictionary;
 
 +(NSString*)photoURLFromJSONData:(NSDictionary*)JSONDictionary;
@@ -68,6 +70,10 @@
 +(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary;
 
 +(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSString *)sessionNameFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary;
 // returns the TEDxVenue dictionary from the Info.plist, which contains the venue id, address, etc
 +(NSDictionary*)venueDictionary;
 
@@ -83,6 +89,7 @@ static NSString* const CONFERENCE_TAG = @"#TED2011";
 static NSString* const WEBSERVICE_ADDRESS = @"http://www.tedxapps.com/wsdl/TEDxService.svc/";
 static NSString* const EVENT_VERSION = @"Version";
 static NSString* const EVENT_SPEAKER_DATA = @"SpeakerData";
-static NSString* const WEBSERVICE_GETCONFERENCEVERSION = @"GetEventVersion";
-
+static NSString* const EVENT_SESSION_DATA = @"SessionData";
+static NSString* const WEBSERVICE_GETEVENTVERSION = @"GetEventVersion";
+static NSString* const WEBSERVICE_GETEVENTSESSIONBYEVENTID = @"GetSessionsByEventId";
 @end

@@ -126,6 +126,7 @@
 	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
 	{
 		speakers = [[EventLogic getSpeakersByEventFromCacheSortByLastName] retain];
+		sessions = [[EventLogic getEventSessionsFromCache] retain];
 	}
 	else {
 		NSString *requestString = [NSString stringWithFormat:
@@ -134,6 +135,7 @@
 								   kPages];
 		
 		speakers = [[EventLogic getSpeakersByEventWebService:requestString EventVersion:eventVersion] retain];
+		sessions = [[EventLogic getEventSessionsFromWebService] retain];
 	}
 
 	
@@ -233,7 +235,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	if(switchFilter.selectedSegmentIndex != 0)
 	{
-		NSString *sectionTitle = [NSString stringWithFormat:@"Session %d", section + 1];
+		NSString *sectionTitle = [EventLogic getSessionNameBySessionId:section + 1 data:sessions];
 		// Create label with section title
 		UILabel *label = [[[UILabel alloc] init] autorelease];
 		label.frame = CGRectMake(0, 0, 320, 15);
@@ -311,6 +313,18 @@
 	[self.tableView reloadData];
 }
 
+- (IBAction)btnCurrent_Clicked
+{
+	switchFilter.selectedSegmentIndex = 1;
+	[self.tableView reloadData];
+	
+	NSInteger currentSection = [EventLogic getCurrentSession:sessions] - 1;
+	
+	NSIndexPath *current = [NSIndexPath indexPathForRow:0 inSection:currentSection];
+	[self.tableView scrollToRowAtIndexPath:current 
+						  atScrollPosition:UITableViewScrollPositionTop
+								  animated:YES];
+}
 #pragma mark -
 #pragma mark Memory management
 
@@ -319,11 +333,13 @@
     // For example: self.myOutlet = nil;
 	
 	[speakers release], speakers = nil;
+	[sessions release], sessions = nil;
 }
 
 
 - (void)dealloc {
 	[speakers release];
+	[sessions release];
 	[switchFilter release];
     [super dealloc];
 }

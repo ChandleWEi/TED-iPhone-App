@@ -45,6 +45,17 @@
 					  [JSONDictionary objectForKey:@"LastName"]];	
 }
 
++ (NSDate*) getDateFromJSON:(NSString *)dateString
+{
+    // Expect date in this format "/Date(1268123281843)/"
+    int startPos = [dateString rangeOfString:@"("].location+1;
+    int endPos = [dateString rangeOfString:@")"].location;
+    NSRange range = NSMakeRange(startPos,endPos-startPos);
+    unsigned long long milliseconds = [[dateString substringWithRange:range] longLongValue];
+    NSTimeInterval interval = milliseconds/1000;
+    return [NSDate dateWithTimeIntervalSince1970:interval];
+}
+
 +(NSString*)titleFromJSONData:(NSDictionary*)JSONDictionary {
 	DAssert([[JSONDictionary objectForKey:@"Title"] isKindOfClass:[NSString class]], @"Title is not a string");
 	
@@ -87,6 +98,18 @@
 	return [[JSONDictionary objectForKey:@"Session"] intValue];
 }
 
++(NSString *)sessionNameFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"SessionName"] isKindOfClass:[NSString class]], @"SessionName is not a string");
+	
+	return [JSONDictionary objectForKey:@"SessionName"];
+}
+
++(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[self getDateFromJSON:[JSONDictionary objectForKey:@"SessionTime"]] isKindOfClass:[NSDate class]], @"SessionTime is not a date");
+	
+	return [self getDateFromJSON:[JSONDictionary objectForKey:@"SessionTime"]];
+}
+
 #pragma mark -
 
 +(NSDictionary*)venueDictionary {
@@ -118,5 +141,6 @@
 +(NSInteger)eventVersion {
 	return [[NSUserDefaults standardUserDefaults] integerForKey:EVENT_VERSION];
 }
+
 @end
 

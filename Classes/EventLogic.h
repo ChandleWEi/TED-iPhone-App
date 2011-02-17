@@ -13,6 +13,16 @@
 
 + (NSUInteger)getEventVersion;
 
++ (NSArray *)getEventSessionsFromWebService;
+
++ (NSArray *)getEventSessionsFromCache;
+
++(int)dateDiff:(NSDate*)firstday lastday:(NSDate*)lastday;
+
++ (NSInteger)getCurrentSession:(NSArray *)sessions;
+
++ (NSString *)getSessionNameBySessionId:(NSInteger)session data:(NSArray *)sessions;
+
 + (NSArray *)getSpeakersByEventWebService : (NSString *)requestString EventVersion : (NSInteger)version;
 
 + (NSArray *)getSpeakersByEventFromCacheSortByLastName;
