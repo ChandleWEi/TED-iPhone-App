@@ -38,15 +38,15 @@
 -(void)layoutSubviews {
 	[super layoutSubviews];
 	
-	CGRect rect = CGRectMake(0, 0, kSpeakersTableRowHeight, kSpeakersTableRowHeight);
+	CGRect rect = CGRectMake(0, 0, kSpeakersTableRowWidth, kSpeakersTableRowHeight);
 	[[self imageView] setFrame:rect];
 	
 	rect = self.textLabel.frame;
-	rect.origin.x = kSpeakersTableRowHeight + 5;
+	rect.origin.x = kSpeakersTableRowWidth + 5;
 	[[self textLabel] setFrame:rect];
 	
 	rect = self.detailTextLabel.frame;
-	rect.origin.x = kSpeakersTableRowHeight + 5;
+	rect.origin.x = kSpeakersTableRowWidth + 5;
 	[[self detailTextLabel] setFrame:rect];	
 }
 

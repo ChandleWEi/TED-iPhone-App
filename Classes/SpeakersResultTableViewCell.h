@@ -30,7 +30,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define kSpeakersTableRowWidth 99
 #define kSpeakersTableRowHeight 70
 
 @interface SpeakersResultTableViewCell : UITableViewCell 
