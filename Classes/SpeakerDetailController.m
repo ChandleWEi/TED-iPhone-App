@@ -142,7 +142,6 @@
 - (void)ShowNotes{
 	NSMutableString *tags = [NSMutableString string];
 	[tags appendString: CONFERENCE_TAG];
-	[tags appendString: @" #"];
 
 	[CatchNotesLauncher showNotesMatchingText:tags fromViewController:self];
 }

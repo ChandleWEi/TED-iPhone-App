@@ -63,6 +63,8 @@
 	<dict>
 		<key>EventId</key>
 		<integer>19</integer>
+		<key>SubEventId</key>
+		<string>18</string>
 		<key>Name</key>
 		<string>Long Beach Convention and Entertainment Center</string>
 		<key>Address</key>

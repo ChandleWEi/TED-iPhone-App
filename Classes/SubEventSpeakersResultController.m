@@ -1,35 +1,25 @@
-/*
- The MIT License
+/*Copyright 2011 Catch.com
  
- Copyright (c) 2010 Peter Ma
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
  
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
+ http://www.apache.org/licenses/LICENSE-2.0
  
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- */
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.*/
 //
-//  SpeakersResultController.m
-//  TEDxTransmedia
+//  SubEventSpeakersResultController.m
+//  TEDxAlcatraz
 //
-//  Created by Nyceane on 8/12/10. Updated by Michael May.
-//  Copyright 2010 Peter Ma. All rights reserved.
+//  Created by Nyceane on 2/17/11.
+//  Copyright 2011 Catch.com. All rights reserved.
 //
 
-#import "SpeakersResultController.h"
+#import "SubEventSpeakersResultController.h"
 #import "TEDxAlcatrazAppDelegate.h"
 #import "SpeakersResultTableViewCell.h"
 #import "SpeakerDetailController.h"
@@ -39,10 +29,10 @@
 #import "EventLogic.h"
 
 #define kPages		1
-#define kSessions	12
+#define kSessions	3
 #define SectionHeaderHeight 15
 
-@implementation SpeakersResultController
+@implementation SubEventSpeakersResultController
 
 @synthesize switchFilter;
 
@@ -103,10 +93,10 @@
 
 -(void)setImage:(UIImage*)image forSpeaker:(NSDictionary*)speaker {
 	NSString* path = [self tempPathForSpeakerImage:speaker];
-
+	
 	BOOL success = [[NSFileManager defaultManager] createFileAtPath:path 
 														   contents:UIImagePNGRepresentation(image)
-														attributes:nil];
+														 attributes:nil];
 	
 	DLog(@"Set Image:Path:%@ Success:%d", path, success);
 }
@@ -116,26 +106,26 @@
 
 -(void)getSpeakersInBackground {	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
+	
 	[speakers release];
+	
+	
+	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal subEventIdentifier]];
 
-
-	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal eventIdentifier]];
-	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
+	if([TEDxAlcatrazGlobal subEventIdentifier] == eventVersion || eventVersion == 0)
 	{
-		speakers = [[EventLogic getSpeakersByEventFromCache] retain];
-		sessions = [[EventLogic getEventSessionsFromCache] retain];
+		speakers = [[EventLogic getSpeakersBySubEventFromCache] retain];
+		sessions = [[EventLogic getSubEventSessionsFromCache] retain];
 	}
 	else {
 		NSString *requestString = [NSString stringWithFormat:
 								   @"http://www.tedxapps.com/wsdl/TEDxService.svc/GetSpeakersByEventId?eventid=%i&page=%i",
-								   [TEDxAlcatrazGlobal eventIdentifier],
+								   [TEDxAlcatrazGlobal subEventIdentifier],
 								   kPages];
-		
-		speakers = [[EventLogic getSpeakersByEventWebService:requestString EventVersion:eventVersion] retain];
-		sessions = [[EventLogic getEventSessionsFromWebService] retain];
+		speakers = [[EventLogic getSpeakersBySubEventWebService:requestString EventVersion:eventVersion] retain];
+		sessions = [[EventLogic getSubEventSessionsFromWebService] retain];
 	}
-
+	
 	
 	[[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 	
@@ -188,7 +178,7 @@
 		}
 		
 		[image release];
-				
+		
 		[pool drain];
 	}
 }
@@ -203,7 +193,7 @@
 	else {
 		return 0;
 	}
-
+	
 }
 
 
@@ -227,7 +217,7 @@
 		default:
 			return 1;
 	}
-
+	
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -241,12 +231,12 @@
 		label.textColor = [UIColor whiteColor];
 		label.font = [UIFont boldSystemFontOfSize:12];
 		label.text = sectionTitle;
-	
+		
 		// Create header view and add label as a subview
 		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, SectionHeaderHeight)];
 		[view autorelease];
 		[view addSubview:label];
-	
+		
 		return view;
 	}
 	else return nil;
@@ -261,7 +251,7 @@
         cell = [[[SpeakersResultTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	NSDictionary *speaker = [self getSpeakerByIndexPath:indexPath];
-
+	
 	// Configure the cell...
 	
 	UIImage* image = [[self imageForSpeaker:speaker] retain];

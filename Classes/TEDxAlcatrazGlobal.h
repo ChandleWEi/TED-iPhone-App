@@ -80,6 +80,10 @@
 // returns the event id from the TEDxVenue dictionary in the Info.plist
 +(NSUInteger)eventIdentifier;
 
+// returns the subEvent id from the TEDxVenue dictionary in the Info.plist
+// This is used for those event that contains multiple subevents, such as TEDxAsheville, TEDUniversity
++(NSUInteger)subEventIdentifier;
+
 // returns the email address from the TEDxVenue dictionary in the Info.plist
 +(NSString*)emailAddress;
 
@@ -90,6 +94,11 @@ static NSString* const WEBSERVICE_ADDRESS = @"http://www.tedxapps.com/wsdl/TEDxS
 static NSString* const EVENT_VERSION = @"Version";
 static NSString* const EVENT_SPEAKER_DATA = @"SpeakerData";
 static NSString* const EVENT_SESSION_DATA = @"SessionData";
+
+static NSString* const SUB_EVENT_VERSION = @"SubEventVersion";
+static NSString* const SUB_EVENT_SPEAKER_DATA = @"SubEventSpeakerData";
+static NSString* const SUB_EVENT_SESSION_DATA = @"SubEventSessionData";
+
 static NSString* const WEBSERVICE_GETEVENTVERSION = @"GetEventVersion";
 static NSString* const WEBSERVICE_GETEVENTSESSIONBYEVENTID = @"GetSessionsByEventId";
 @end

@@ -87,7 +87,7 @@
 }
 
 +(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"SpeakerId"] isKindOfClass:[NSNumber class]], @"Speaker Id is not a number");
+	DAssert([[JSONDictionary objectForKey:@"SpeakerId"] isKindOfClass:[NSNumber class]], @"SpeakerId is not a number");
 	
 	return [[JSONDictionary objectForKey:@"SpeakerId"] intValue];
 }
@@ -127,6 +127,16 @@
 	DAssert(eventIdNumber != nil, @"The event id is nil");
 	
 	return [eventIdNumber integerValue];
+}
+
++(NSUInteger)subEventIdentifier{
+	NSDictionary* TEDxVenueDetails = [TEDxAlcatrazGlobal venueDictionary];
+	NSNumber *eventIdNumber = [TEDxVenueDetails objectForKey:@"SubEventId"];
+	
+	DAssert(eventIdNumber != nil, @"The sub event id is nil");
+	
+	return [eventIdNumber integerValue];
+	
 }
 
 +(NSString*)emailAddress {

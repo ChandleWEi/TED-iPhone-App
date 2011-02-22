@@ -14,6 +14,13 @@
 		1F2F88D61302FF8000D75D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F88D51302FF8000D75D92 /* QuartzCore.framework */; };
 		1F34F58C13083B2800032D3F /* WebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34F58B13083B2800032D3F /* WebServices.m */; };
 		1F34F5CC1308405F00032D3F /* EventLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34F5CB1308405F00032D3F /* EventLogic.m */; };
+		1F34FBCD130DEB4D00032D3F /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBCC130DEB4D00032D3F /* button.png */; };
+		1F34FBCF130DEBBE00032D3F /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBCE130DEBBE00032D3F /* clock.png */; };
+		1F34FBDE130DF25500032D3F /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBDC130DF25500032D3F /* book.png */; };
+		1F34FBDF130DF25500032D3F /* bookon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBDD130DF25500032D3F /* bookon.png */; };
+		1F34FBED130DF69500032D3F /* SubEventSpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */; };
+		1F34FBEE130DF69500032D3F /* SubEventSpeakerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */; };
+		1F34FBF7130DFA8000032D3F /* SubEventSpeakersResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */; };
 		1F64ED5212935720003A8687 /* InformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED3F12935720003A8687 /* InformationController.m */; };
 		1F64ED5312935720003A8687 /* InformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED4012935720003A8687 /* InformationController.xib */; };
 		1F64ED5412935720003A8687 /* ScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED4312935720003A8687 /* ScheduleController.m */; };
@@ -71,6 +78,15 @@
 		1F34F58B13083B2800032D3F /* WebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServices.m; sourceTree = "<group>"; };
 		1F34F5CA1308405F00032D3F /* EventLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventLogic.h; sourceTree = "<group>"; };
 		1F34F5CB1308405F00032D3F /* EventLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLogic.m; sourceTree = "<group>"; };
+		1F34FBCC130DEB4D00032D3F /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		1F34FBCE130DEBBE00032D3F /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		1F34FBDC130DF25500032D3F /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		1F34FBDD130DF25500032D3F /* bookon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookon.png; sourceTree = "<group>"; };
+		1F34FBEA130DF69500032D3F /* SubEventSpeakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubEventSpeakerViewController.h; sourceTree = "<group>"; };
+		1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubEventSpeakerViewController.m; sourceTree = "<group>"; };
+		1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubEventSpeakerViewController.xib; sourceTree = "<group>"; };
+		1F34FBF5130DFA8000032D3F /* SubEventSpeakersResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubEventSpeakersResultController.h; sourceTree = "<group>"; };
+		1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubEventSpeakersResultController.m; sourceTree = "<group>"; };
 		1F64ED3E12935720003A8687 /* InformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationController.h; sourceTree = "<group>"; };
 		1F64ED3F12935720003A8687 /* InformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationController.m; sourceTree = "<group>"; };
 		1F64ED4012935720003A8687 /* InformationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationController.xib; sourceTree = "<group>"; };
@@ -160,6 +176,7 @@
 				1F34F57413083B1900032D3F /* Utility */,
 				663B9B0212D209BA00C75B08 /* WebViewControllerBaseClass */,
 				1F64ED4E12935720003A8687 /* Map */,
+				1F34FBE1130DF2CD00032D3F /* SubEventSpeakers */,
 				1F64ED4512935720003A8687 /* Speakers */,
 				1F64ED4112935720003A8687 /* Schedule */,
 				1F64ED3D12935720003A8687 /* Information */,
@@ -188,6 +205,18 @@
 				1F34F5CB1308405F00032D3F /* EventLogic.m */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		1F34FBE1130DF2CD00032D3F /* SubEventSpeakers */ = {
+			isa = PBXGroup;
+			children = (
+				1F34FBF5130DFA8000032D3F /* SubEventSpeakersResultController.h */,
+				1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */,
+				1F34FBEA130DF69500032D3F /* SubEventSpeakerViewController.h */,
+				1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */,
+				1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */,
+			);
+			name = SubEventSpeakers;
 			sourceTree = "<group>";
 		};
 		1F64ED3D12935720003A8687 /* Information */ = {
@@ -306,10 +335,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F34FBCE130DEBBE00032D3F /* clock.png */,
+				1F34FBCC130DEB4D00032D3F /* button.png */,
 				662B4A0B12F74B9B00DD17AF /* Defaults */,
 				1F64EDBA12936581003A8687 /* icons */,
 				1F64ED6212935733003A8687 /* mapon.png */,
 				1F64ED6312935733003A8687 /* map.png */,
+				1F34FBDC130DF25500032D3F /* book.png */,
+				1F34FBDD130DF25500032D3F /* bookon.png */,
 				1F64ED6412935733003A8687 /* infomationon.png */,
 				1F64ED6512935733003A8687 /* information.png */,
 				1F64ED6612935733003A8687 /* schedule.png */,
@@ -429,6 +462,11 @@
 				662B4A0912F74B9800DD17AF /* Default@2x.png in Resources */,
 				6666E81C12F75C13004752F3 /* Default-Landscape.png in Resources */,
 				6666E81D12F75C13004752F3 /* Default-Portrait.png in Resources */,
+				1F34FBCD130DEB4D00032D3F /* button.png in Resources */,
+				1F34FBCF130DEBBE00032D3F /* clock.png in Resources */,
+				1F34FBDE130DF25500032D3F /* book.png in Resources */,
+				1F34FBDF130DF25500032D3F /* bookon.png in Resources */,
+				1F34FBEE130DF69500032D3F /* SubEventSpeakerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +497,8 @@
 				1FE6D52513005CB50054A4F1 /* CatchNotesLauncher.m in Sources */,
 				1F34F58C13083B2800032D3F /* WebServices.m in Sources */,
 				1F34F5CC1308405F00032D3F /* EventLogic.m in Sources */,
+				1F34FBED130DF69500032D3F /* SubEventSpeakerViewController.m in Sources */,
+				1F34FBF7130DFA8000032D3F /* SubEventSpeakersResultController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
