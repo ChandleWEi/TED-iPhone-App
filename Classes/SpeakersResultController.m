@@ -79,7 +79,7 @@
 	UIImage *image = nil;
 	
 	if([[NSFileManager defaultManager] fileExistsAtPath:path] == YES) {		
-		image = [[UIImage alloc] initWithContentsOfFile:path];
+		image = [[[UIImage alloc] initWithContentsOfFile:path] autorelease];
 		
 		DLog(@"Found image for speaker:Path:%@ (Image:%@)", path, image);
 	}
@@ -151,7 +151,7 @@
 		
 		[self createTempPath];
 		
-		UIImage* image = [[self imageForSpeaker:speaker] retain];
+		UIImage* image = [self imageForSpeaker:speaker];
 		
 		if(image == nil) {
 			DLog(@"Getting data for %@ (speaker:%d)", indexPath, [TEDxAlcatrazGlobal speakerIdFromJSONData:speaker]);		
@@ -162,7 +162,7 @@
 			
 			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 			
-			image = [[UIImage alloc] initWithData:receivedData];
+			image = [[[UIImage alloc] initWithData:receivedData] autorelease];
 			
 			[receivedData release];
 			
@@ -187,8 +187,6 @@
 			DLog(@"Set image:%@", [cell imageView]);
 		}
 		
-		[image release];
-				
 		[pool drain];
 	}
 }
@@ -264,7 +262,7 @@
 
 	// Configure the cell...
 	
-	UIImage* image = [[self imageForSpeaker:speaker] retain];
+	UIImage* image = [self imageForSpeaker:speaker];
 	cell.imageView.image = image;	
 	
 	cell.textLabel.text = [TEDxAlcatrazGlobal nameStringFromJSONData:speaker];		// speakers name

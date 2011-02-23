@@ -71,7 +71,6 @@
 		662B4A5A12F74E6300DD17AF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 662B4A5912F74E6300DD17AF /* MessageUI.framework */; };
 		663B9B0512D209F800C75B08 /* WebViewControllerBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 663B9B0412D209F800C75B08 /* WebViewControllerBaseClass.m */; };
 		663B9B6612D20FE500C75B08 /* TEDxAlcatrazGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 663B9B6512D20FE500C75B08 /* TEDxAlcatrazGlobal.m */; };
-		6650AB7C12D22750006A32B9 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6650AB7B12D22750006A32B9 /* Entitlements.plist */; };
 		668608E212D23ED5002A8A23 /* SpeakersResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 668608E112D23ED5002A8A23 /* SpeakersResultTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -163,7 +162,6 @@
 		663B9B0312D209F800C75B08 /* WebViewControllerBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewControllerBaseClass.h; sourceTree = "<group>"; };
 		663B9B0412D209F800C75B08 /* WebViewControllerBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewControllerBaseClass.m; sourceTree = "<group>"; };
 		663B9B6512D20FE500C75B08 /* TEDxAlcatrazGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDxAlcatrazGlobal.m; sourceTree = "<group>"; };
-		6650AB7B12D22750006A32B9 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		668608E012D23ED5002A8A23 /* SpeakersResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersResultTableViewCell.h; sourceTree = "<group>"; };
 		668608E112D23ED5002A8A23 /* SpeakersResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersResultTableViewCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TEDxAlcatraz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TEDxAlcatraz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -357,7 +355,6 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				6650AB7B12D22750006A32B9 /* Entitlements.plist */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -483,7 +480,6 @@
 				1F64ED6F12935733003A8687 /* scheduleon.png in Resources */,
 				1F64ED7012935733003A8687 /* speakers.png in Resources */,
 				1F64ED7112935733003A8687 /* speakerson.png in Resources */,
-				6650AB7C12D22750006A32B9 /* Entitlements.plist in Resources */,
 				1F34FBCD130DEB4D00032D3F /* button.png in Resources */,
 				1F34FBCF130DEBBE00032D3F /* clock.png in Resources */,
 				1F34FBEE130DF69500032D3F /* SubEventSpeakerViewController.xib in Resources */,
@@ -549,7 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -568,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TEDxAlcatraz_Prefix.pch;
@@ -586,21 +582,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -613,7 +609,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-all_load",

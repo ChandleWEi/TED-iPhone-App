@@ -43,6 +43,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Add the tab bar controller's view to the window and display.
 	
+	// the view structure is weird, and the app is forcing the tab bar to hide/show itself 
+	// with some kind of view resizing.  This background color makes that transition look better.
+	window.backgroundColor = [UIColor blackColor];
+	
 	self.tabBarController = tabBarController;
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];

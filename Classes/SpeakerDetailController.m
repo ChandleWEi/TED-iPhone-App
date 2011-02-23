@@ -57,24 +57,24 @@
 
 	if(hide)
 	{
-		tabbar.alpha = 0.0;
 		viewFrame.size.height += 40;
 		viewFrame.origin.y += 20;
 
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationDuration:0.75];
 	
+		tabbar.alpha = 0.0;
 		view.frame = viewFrame;
 		[UIView commitAnimations];
 	}
 	else {
-		tabbar.alpha = 1.0;
 		viewFrame.size.height -= 40;
 		viewFrame.origin.y -= 20;
 		
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationDuration:0.3];
 		
+		tabbar.alpha = 1.0;
 		view.frame = viewFrame;
 		[UIView commitAnimations];
 	}
