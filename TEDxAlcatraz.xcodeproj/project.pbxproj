@@ -22,7 +22,6 @@
 		1F3C84BC1316E0B000472A43 /* default_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3C84BB1316E0B000472A43 /* default_user.png */; };
 		1F3C850F1316E70A00472A43 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C850E1316E70A00472A43 /* Base64.m */; };
 		1F3C85321316E7AC00472A43 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C852B1316E7AC00472A43 /* GTMNSString+HTML.m */; };
-		1F3C85331316E7AC00472A43 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F3C852C1316E7AC00472A43 /* LICENSE.txt */; };
 		1F3C85341316E7AC00472A43 /* QSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C852E1316E7AC00472A43 /* QSFileManager.m */; };
 		1F3C85351316E7AC00472A43 /* QSStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C85301316E7AC00472A43 /* QSStrings.m */; };
 		1F64ED5212935720003A8687 /* InformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED3F12935720003A8687 /* InformationController.m */; };
@@ -104,7 +103,6 @@
 		1F3C85291316E7AC00472A43 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		1F3C852A1316E7AC00472A43 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		1F3C852B1316E7AC00472A43 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
-		1F3C852C1316E7AC00472A43 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		1F3C852D1316E7AC00472A43 /* QSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSFileManager.h; sourceTree = "<group>"; };
 		1F3C852E1316E7AC00472A43 /* QSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSFileManager.m; sourceTree = "<group>"; };
 		1F3C852F1316E7AC00472A43 /* QSStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSStrings.h; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				1F3C85281316E7AC00472A43 /* GTM */,
-				1F3C852C1316E7AC00472A43 /* LICENSE.txt */,
 				1F3C852D1316E7AC00472A43 /* QSFileManager.h */,
 				1F3C852E1316E7AC00472A43 /* QSFileManager.m */,
 				1F3C852F1316E7AC00472A43 /* QSStrings.h */,
@@ -550,7 +547,6 @@
 				1FCCA914131458A500DD24B6 /* speakers@2x.png in Resources */,
 				1FCCA915131458A500DD24B6 /* speakerson@2x.png in Resources */,
 				1F3C84BC1316E0B000472A43 /* default_user.png in Resources */,
-				1F3C85331316E7AC00472A43 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
