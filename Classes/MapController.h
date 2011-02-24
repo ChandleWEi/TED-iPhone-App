@@ -36,7 +36,7 @@
 	MKMapView *mapView;
 }
 
-@property (readonly, retain, nonatomic) IBOutlet MKMapView*  mapView;
+@property (retain, nonatomic) IBOutlet MKMapView*  mapView;
 
 -(IBAction)btnDirection_Clicked;
 

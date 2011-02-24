@@ -39,7 +39,7 @@
 	UIWebView *webView;
 }
 
-@property (readonly, nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
 
 -(void)setColouredBackgroundForWebView:(UIColor*)aColor;
 

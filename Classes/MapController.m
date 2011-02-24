@@ -86,10 +86,6 @@
 #pragma mark -
 #pragma mark MapController
 
-@interface MapController (InternalMethods) 
-@property (retain, nonatomic) IBOutlet MKMapView*  mapView;
-@end
-
 @implementation MapController
 
 @synthesize mapView;

@@ -33,10 +33,6 @@
 #import "WebViewControllerBaseClass.h"
 #import "TEDxAlcatrazGlobal.h"
 
-@interface WebViewControllerBaseClass (InternalMethods) 
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@end
-
 
 @implementation WebViewControllerBaseClass
 
