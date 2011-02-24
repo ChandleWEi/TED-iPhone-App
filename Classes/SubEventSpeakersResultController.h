@@ -22,7 +22,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SubEventSpeakersResultController : UITableViewController <UITabBarControllerDelegate>{
+@interface SubEventSpeakersResultController : UITableViewController {
 	NSArray *speakers;
 	NSArray *sessions;
 	UISegmentedControl *switchFilter;

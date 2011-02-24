@@ -31,7 +31,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpeakersResultController : UITableViewController <UITabBarControllerDelegate>{
+@interface SpeakersResultController : UITableViewController {
 	NSArray *speakers;
 	NSArray *sessions;
 	UISegmentedControl *switchFilter;

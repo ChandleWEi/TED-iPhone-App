@@ -16,23 +16,19 @@
 		1F34F5CC1308405F00032D3F /* EventLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34F5CB1308405F00032D3F /* EventLogic.m */; };
 		1F34FBCD130DEB4D00032D3F /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBCC130DEB4D00032D3F /* button.png */; };
 		1F34FBCF130DEBBE00032D3F /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBCE130DEBBE00032D3F /* clock.png */; };
-		1F34FBED130DF69500032D3F /* SubEventSpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */; };
-		1F34FBEE130DF69500032D3F /* SubEventSpeakerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */; };
-		1F34FBF7130DFA8000032D3F /* SubEventSpeakersResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */; };
 		1F3C84BC1316E0B000472A43 /* default_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3C84BB1316E0B000472A43 /* default_user.png */; };
 		1F3C850F1316E70A00472A43 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C850E1316E70A00472A43 /* Base64.m */; };
 		1F3C85321316E7AC00472A43 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C852B1316E7AC00472A43 /* GTMNSString+HTML.m */; };
 		1F3C85341316E7AC00472A43 /* QSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C852E1316E7AC00472A43 /* QSFileManager.m */; };
 		1F3C85351316E7AC00472A43 /* QSStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C85301316E7AC00472A43 /* QSStrings.m */; };
+		1F58B69F131710CD00A1163C /* SpeakersResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58B69D131710CD00A1163C /* SpeakersResultController.m */; };
+		1F58B6A0131710CD00A1163C /* SpeakersResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F58B69E131710CD00A1163C /* SpeakersResultController.xib */; };
 		1F64ED5212935720003A8687 /* InformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED3F12935720003A8687 /* InformationController.m */; };
 		1F64ED5312935720003A8687 /* InformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED4012935720003A8687 /* InformationController.xib */; };
 		1F64ED5412935720003A8687 /* ScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED4312935720003A8687 /* ScheduleController.m */; };
 		1F64ED5512935720003A8687 /* ScheduleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED4412935720003A8687 /* ScheduleController.xib */; };
 		1F64ED5612935720003A8687 /* SpeakerDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED4712935720003A8687 /* SpeakerDetailController.m */; };
 		1F64ED5712935720003A8687 /* SpeakerDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED4812935720003A8687 /* SpeakerDetailController.xib */; };
-		1F64ED5812935720003A8687 /* SpeakersResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED4A12935720003A8687 /* SpeakersResultController.m */; };
-		1F64ED5912935720003A8687 /* SpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED4C12935720003A8687 /* SpeakerViewController.m */; };
-		1F64ED5A12935720003A8687 /* SpeakerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED4D12935720003A8687 /* SpeakerViewController.xib */; };
 		1F64ED5B12935720003A8687 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED5012935720003A8687 /* MapController.m */; };
 		1F64ED5C12935720003A8687 /* MapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED5112935720003A8687 /* MapController.xib */; };
 		1F64ED6A12935733003A8687 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED6212935733003A8687 /* mapon.png */; };
@@ -70,6 +66,8 @@
 		1FCCA913131458A500DD24B6 /* scheduleon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCCA90F131458A500DD24B6 /* scheduleon@2x.png */; };
 		1FCCA914131458A500DD24B6 /* speakers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCCA910131458A500DD24B6 /* speakers@2x.png */; };
 		1FCCA915131458A500DD24B6 /* speakerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCCA911131458A500DD24B6 /* speakerson@2x.png */; };
+		1FDC4246131716580049CE8B /* SubEventSpeakersResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC4244131716580049CE8B /* SubEventSpeakersResultController.m */; };
+		1FDC4247131716580049CE8B /* SubEventSpeakersResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDC4245131716580049CE8B /* SubEventSpeakersResultController.xib */; };
 		1FE6D52513005CB50054A4F1 /* CatchNotesLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6D52413005CB50054A4F1 /* CatchNotesLauncher.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
@@ -92,11 +90,6 @@
 		1F34F5CB1308405F00032D3F /* EventLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventLogic.m; sourceTree = "<group>"; };
 		1F34FBCC130DEB4D00032D3F /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		1F34FBCE130DEBBE00032D3F /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
-		1F34FBEA130DF69500032D3F /* SubEventSpeakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubEventSpeakerViewController.h; sourceTree = "<group>"; };
-		1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubEventSpeakerViewController.m; sourceTree = "<group>"; };
-		1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubEventSpeakerViewController.xib; sourceTree = "<group>"; };
-		1F34FBF5130DFA8000032D3F /* SubEventSpeakersResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubEventSpeakersResultController.h; sourceTree = "<group>"; };
-		1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubEventSpeakersResultController.m; sourceTree = "<group>"; };
 		1F3C84BB1316E0B000472A43 /* default_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_user.png; sourceTree = "<group>"; };
 		1F3C850D1316E70A00472A43 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		1F3C850E1316E70A00472A43 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
@@ -108,6 +101,9 @@
 		1F3C852F1316E7AC00472A43 /* QSStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSStrings.h; sourceTree = "<group>"; };
 		1F3C85301316E7AC00472A43 /* QSStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSStrings.m; sourceTree = "<group>"; };
 		1F3C85311316E7AC00472A43 /* QSUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSUtilities.h; sourceTree = "<group>"; };
+		1F58B69C131710CD00A1163C /* SpeakersResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersResultController.h; sourceTree = "<group>"; };
+		1F58B69D131710CD00A1163C /* SpeakersResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersResultController.m; sourceTree = "<group>"; };
+		1F58B69E131710CD00A1163C /* SpeakersResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakersResultController.xib; sourceTree = "<group>"; };
 		1F64ED3E12935720003A8687 /* InformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationController.h; sourceTree = "<group>"; };
 		1F64ED3F12935720003A8687 /* InformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationController.m; sourceTree = "<group>"; };
 		1F64ED4012935720003A8687 /* InformationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationController.xib; sourceTree = "<group>"; };
@@ -117,11 +113,6 @@
 		1F64ED4612935720003A8687 /* SpeakerDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerDetailController.h; sourceTree = "<group>"; };
 		1F64ED4712935720003A8687 /* SpeakerDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerDetailController.m; sourceTree = "<group>"; };
 		1F64ED4812935720003A8687 /* SpeakerDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakerDetailController.xib; sourceTree = "<group>"; };
-		1F64ED4912935720003A8687 /* SpeakersResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersResultController.h; sourceTree = "<group>"; };
-		1F64ED4A12935720003A8687 /* SpeakersResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersResultController.m; sourceTree = "<group>"; };
-		1F64ED4B12935720003A8687 /* SpeakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerViewController.h; sourceTree = "<group>"; };
-		1F64ED4C12935720003A8687 /* SpeakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerViewController.m; sourceTree = "<group>"; };
-		1F64ED4D12935720003A8687 /* SpeakerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakerViewController.xib; sourceTree = "<group>"; };
 		1F64ED4F12935720003A8687 /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
 		1F64ED5012935720003A8687 /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
 		1F64ED5112935720003A8687 /* MapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapController.xib; sourceTree = "<group>"; };
@@ -167,6 +158,9 @@
 		1FCCA90F131458A500DD24B6 /* scheduleon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scheduleon@2x.png"; sourceTree = "<group>"; };
 		1FCCA910131458A500DD24B6 /* speakers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speakers@2x.png"; sourceTree = "<group>"; };
 		1FCCA911131458A500DD24B6 /* speakerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speakerson@2x.png"; sourceTree = "<group>"; };
+		1FDC4243131716580049CE8B /* SubEventSpeakersResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubEventSpeakersResultController.h; sourceTree = "<group>"; };
+		1FDC4244131716580049CE8B /* SubEventSpeakersResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubEventSpeakersResultController.m; sourceTree = "<group>"; };
+		1FDC4245131716580049CE8B /* SubEventSpeakersResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubEventSpeakersResultController.xib; sourceTree = "<group>"; };
 		1FE6D52313005CB50054A4F1 /* CatchNotesLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchNotesLauncher.h; sourceTree = "<group>"; };
 		1FE6D52413005CB50054A4F1 /* CatchNotesLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatchNotesLauncher.m; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -242,11 +236,9 @@
 		1F34FBE1130DF2CD00032D3F /* SubEventSpeakers */ = {
 			isa = PBXGroup;
 			children = (
-				1F34FBF5130DFA8000032D3F /* SubEventSpeakersResultController.h */,
-				1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */,
-				1F34FBEA130DF69500032D3F /* SubEventSpeakerViewController.h */,
-				1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */,
-				1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */,
+				1FDC4243131716580049CE8B /* SubEventSpeakersResultController.h */,
+				1FDC4244131716580049CE8B /* SubEventSpeakersResultController.m */,
+				1FDC4245131716580049CE8B /* SubEventSpeakersResultController.xib */,
 			);
 			name = SubEventSpeakers;
 			sourceTree = "<group>";
@@ -302,11 +294,9 @@
 				1F64ED4812935720003A8687 /* SpeakerDetailController.xib */,
 				668608E012D23ED5002A8A23 /* SpeakersResultTableViewCell.h */,
 				668608E112D23ED5002A8A23 /* SpeakersResultTableViewCell.m */,
-				1F64ED4912935720003A8687 /* SpeakersResultController.h */,
-				1F64ED4A12935720003A8687 /* SpeakersResultController.m */,
-				1F64ED4B12935720003A8687 /* SpeakerViewController.h */,
-				1F64ED4C12935720003A8687 /* SpeakerViewController.m */,
-				1F64ED4D12935720003A8687 /* SpeakerViewController.xib */,
+				1F58B69C131710CD00A1163C /* SpeakersResultController.h */,
+				1F58B69D131710CD00A1163C /* SpeakersResultController.m */,
+				1F58B69E131710CD00A1163C /* SpeakersResultController.xib */,
 			);
 			name = Speakers;
 			sourceTree = "<group>";
@@ -513,7 +503,6 @@
 				1F64ED5312935720003A8687 /* InformationController.xib in Resources */,
 				1F64ED5512935720003A8687 /* ScheduleController.xib in Resources */,
 				1F64ED5712935720003A8687 /* SpeakerDetailController.xib in Resources */,
-				1F64ED5A12935720003A8687 /* SpeakerViewController.xib in Resources */,
 				1F64ED5C12935720003A8687 /* MapController.xib in Resources */,
 				1F64ED6A12935733003A8687 /* mapon.png in Resources */,
 				1F64ED6B12935733003A8687 /* map.png in Resources */,
@@ -525,7 +514,6 @@
 				1F64ED7112935733003A8687 /* speakerson.png in Resources */,
 				1F34FBCD130DEB4D00032D3F /* button.png in Resources */,
 				1F34FBCF130DEBBE00032D3F /* clock.png in Resources */,
-				1F34FBEE130DF69500032D3F /* SubEventSpeakerViewController.xib in Resources */,
 				1F7FDDA713144EEB00344AE1 /* Icon-72.png in Resources */,
 				1F7FDDA813144EEB00344AE1 /* Icon-Small-50.png in Resources */,
 				1F7FDDA913144EEB00344AE1 /* Icon-Small.png in Resources */,
@@ -547,6 +535,8 @@
 				1FCCA914131458A500DD24B6 /* speakers@2x.png in Resources */,
 				1FCCA915131458A500DD24B6 /* speakerson@2x.png in Resources */,
 				1F3C84BC1316E0B000472A43 /* default_user.png in Resources */,
+				1F58B6A0131710CD00A1163C /* SpeakersResultController.xib in Resources */,
+				1FDC4247131716580049CE8B /* SubEventSpeakersResultController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,8 +552,6 @@
 				1F64ED5212935720003A8687 /* InformationController.m in Sources */,
 				1F64ED5412935720003A8687 /* ScheduleController.m in Sources */,
 				1F64ED5612935720003A8687 /* SpeakerDetailController.m in Sources */,
-				1F64ED5812935720003A8687 /* SpeakersResultController.m in Sources */,
-				1F64ED5912935720003A8687 /* SpeakerViewController.m in Sources */,
 				1F64ED5B12935720003A8687 /* MapController.m in Sources */,
 				1F64ED841293575C003A8687 /* NSObject+SBJSON.m in Sources */,
 				1F64ED851293575C003A8687 /* NSString+SBJSON.m in Sources */,
@@ -577,12 +565,12 @@
 				1FE6D52513005CB50054A4F1 /* CatchNotesLauncher.m in Sources */,
 				1F34F58C13083B2800032D3F /* WebServices.m in Sources */,
 				1F34F5CC1308405F00032D3F /* EventLogic.m in Sources */,
-				1F34FBED130DF69500032D3F /* SubEventSpeakerViewController.m in Sources */,
-				1F34FBF7130DFA8000032D3F /* SubEventSpeakersResultController.m in Sources */,
 				1F3C850F1316E70A00472A43 /* Base64.m in Sources */,
 				1F3C85321316E7AC00472A43 /* GTMNSString+HTML.m in Sources */,
 				1F3C85341316E7AC00472A43 /* QSFileManager.m in Sources */,
 				1F3C85351316E7AC00472A43 /* QSStrings.m in Sources */,
+				1F58B69F131710CD00A1163C /* SpeakersResultController.m in Sources */,
+				1FDC4246131716580049CE8B /* SubEventSpeakersResultController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

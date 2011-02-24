@@ -158,41 +158,10 @@
 	
 	if(self) {
 		speakerDictionary = [speakerJSONDictionary retain];
+		self.hidesBottomBarWhenPushed = YES;
 	}
 	
 	return self;
-}
-
-#pragma mark -
-- (void)displayTabBar:(BOOL)hide
-{
-	UIView *view = ((TEDxAlcatrazAppDelegate*)[UIApplication sharedApplication].delegate).tabBarController.view;
-	UITabBar * tabbar = ((TEDxAlcatrazAppDelegate*)[UIApplication sharedApplication].delegate).tabBarController.tabBar;
-	CGRect viewFrame = view.frame;
-
-	if(hide)
-	{
-		viewFrame.size.height += 40;
-		viewFrame.origin.y += 20;
-
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationDuration:0.75];
-	
-		tabbar.alpha = 0.0;
-		view.frame = viewFrame;
-		[UIView commitAnimations];
-	}
-	else {
-		viewFrame.size.height -= 40;
-		viewFrame.origin.y -= 20;
-		
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationDuration:0.3];
-		
-		tabbar.alpha = 1.0;
-		view.frame = viewFrame;
-		[UIView commitAnimations];
-	}
 }
 
 
@@ -200,8 +169,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	//Hide Tabbar
-	[self displayTabBar:YES];
 	
 	self.navigationItem.title = [TEDxAlcatrazGlobal nameStringFromJSONData:speakerDictionary];
 
@@ -234,13 +201,6 @@
 								[TEDxAlcatrazGlobal descriptionFromJSONData:speakerDictionary]]];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-	UIView *view = ((TEDxAlcatrazAppDelegate*)[UIApplication sharedApplication].delegate).tabBarController.view;
-	CGRect viewFrame = view.frame;
-	viewFrame.size.height += 30;
-	view.frame = viewFrame;
-}
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -306,7 +266,6 @@
 #pragma mark -
 
 - (void)dealloc {
-	[self displayTabBar:NO];
 	[actionControls release];
 	[speakerDictionary release];
 	[speakerToolBar release];
