@@ -100,8 +100,6 @@
 	[super viewDidLoad];
 	
 	[super setColouredBackgroundForWebView:[UIColor blackColor]];
-	
-	[super loadURLString:[NSString stringWithFormat:kTEDxInformationURL, [TEDxAlcatrazGlobal eventIdentifier]]];
 }
 
 #pragma mark -

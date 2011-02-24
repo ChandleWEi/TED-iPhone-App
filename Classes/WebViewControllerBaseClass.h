@@ -45,4 +45,6 @@
 
 - (void)loadURLString:(NSString*)URLString;
 
+- (void)loadLocalHTMLString:(NSString*)URLString;
+
 @end

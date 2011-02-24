@@ -272,7 +272,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.navigationItem.title = @"Speakers";
+	self.navigationItem.title = @"TEDU Speakers";
 	
 	self.tableView.rowHeight = kSpeakersTableRowHeight;
 	

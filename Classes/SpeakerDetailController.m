@@ -33,6 +33,121 @@
 #import "SpeakerDetailController.h"
 #import "TEDxAlcatrazGlobal.h"
 #import "CatchNotesLauncher.h"
+#import "Base64.h"
+
+#define kSpeakerHtml @"<html> \
+<head> \
+<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /> \
+<meta name=\"viewport\" content=\"width=320\" /> \
+<style type=\"text/css\"> \
+	body { \
+		background-color:Black; \
+		color:#cccccc; \
+		margin: 0; \
+		padding: 0; \
+		font-weight: normal; \
+		font-family: Arial, Helvetica, sans-serif; \
+	} \
+\
+	h2 \
+	{ \
+		margin-bottom:5px \
+	} \
+\
+	/* Speaker Photo */ \
+	.speakerphoto \
+	{ \
+		width:150px; \
+		padding:10px; \
+		float:left; \
+	} \
+\
+	.speakertitle \
+	{ \
+		float:left; \
+		clear:right; \
+		margin:5px; \
+	} \
+\
+	.speakerdescription \
+	{ \
+		clear:both; \
+		padding:20px; \
+	} \
+\
+	/* Content */ \
+	.pages \
+	{ \
+		padding:15px; \
+	} \
+\
+	span.red \
+	{ \
+		color:Red; \
+	} \
+\
+	#main \
+	{ \
+		width:100%; \
+		padding:10px; \
+	} \
+\
+	#about \
+	{ \
+		font-size:40px; \
+	} \
+\
+	/*Phones thats smaller than 480px*/ \
+	@media only screen and (max-device-width: 480px) { \
+\
+	.speakerphoto \
+	{ \
+		width:140px; \
+	} \
+\
+	.speakertitle \
+	{ \
+		width:150px; \
+	} \
+\
+	.pageimage \
+	{ \
+		width:300px; \
+	} \
+	} \
+\
+	/*Phones thats smaller than 480px*/ \
+	@media only screen and (max-device-width: 320px) { \
+\
+	.speakerphoto \
+	{ \
+		width:120px; \
+	} \
+\
+	.speakertitle \
+	{ \
+		width:130px; \
+	} \
+\
+	.pageimage \
+	{ \
+		width:280px; \
+	} \
+	} \
+</style> \
+</head> \
+\
+<body> \
+<div> \
+<img id=\"litProfilePhotoUrl\" class=\"speakerphoto\" src=\"data:image/png;base64,%@\" style=\"border-width:0px;\" /> \
+<div class=\"speakertitle\"> \
+<h3><span id=\"litSpeakerName\">%@</span></h3> \
+<span><i>%@</i></span> \
+</div> \
+<p class=\"speakerdescription\">%@</p> \
+</div> \
+</body> \
+</html>"
 
 @implementation SpeakerDetailController
 @synthesize actionControls, speakerToolBar;
@@ -91,11 +206,32 @@
 	self.navigationItem.title = [TEDxAlcatrazGlobal nameStringFromJSONData:speakerDictionary];
 
 	//Set up WebView, just temporary to improve development speed
-	NSString *urlAddress =	[NSString stringWithFormat:
+	/*NSString *urlAddress =	[NSString stringWithFormat:
 							@"http://www.tedxapps.com/mobile/speaker/?SpeakerId=%d",
 							[TEDxAlcatrazGlobal speakerIdFromJSONData:speakerDictionary]];
-
-	[super loadURLString:urlAddress];
+	 */
+	//[super loadURLString:urlAddress];
+	
+	
+	
+	UIImage *userimage;
+	
+	NSLog(@"%@", [TEDxAlcatrazGlobal tempPathForSpeakerImage:speakerDictionary]);
+	if ([[TEDxAlcatrazGlobal tempPathForSpeakerImage:speakerDictionary] isEqualToString:@""]) {
+		userimage = [UIImage imageNamed:@"default_user.png"];
+	}
+	else
+	{
+		userimage = [TEDxAlcatrazGlobal imageForSpeaker:speakerDictionary];
+	}
+	
+	NSData *imageData = UIImageJPEGRepresentation(userimage, 1.0);
+	
+	[super loadLocalHTMLString:[NSString stringWithFormat:	kSpeakerHtml, 
+								[Base64 encodeBase64WithData:imageData],
+								[TEDxAlcatrazGlobal nameStringFromJSONData:speakerDictionary],
+								[TEDxAlcatrazGlobal titleFromJSONData:speakerDictionary],
+								[TEDxAlcatrazGlobal descriptionFromJSONData:speakerDictionary]]];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -133,7 +269,9 @@
 	[notes appendString: @"\n\nTwitter:"];
 	[notes appendString: [TEDxAlcatrazGlobal twitterFromJSONData:speakerDictionary]];
 	
-	[notes appendString: @"\n\n"];
+	[notes appendString: @"\n\nMy Notes:"];	
+	
+	[notes appendString: @"\n\n\n\n_________________________________\nTags: "];
 	[notes appendString: CONFERENCE_TAG];
 
 	[self createCatchNoteWithText:notes];

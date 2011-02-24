@@ -19,6 +19,12 @@
 		1F34FBED130DF69500032D3F /* SubEventSpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34FBEB130DF69500032D3F /* SubEventSpeakerViewController.m */; };
 		1F34FBEE130DF69500032D3F /* SubEventSpeakerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */; };
 		1F34FBF7130DFA8000032D3F /* SubEventSpeakersResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */; };
+		1F3C84BC1316E0B000472A43 /* default_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F3C84BB1316E0B000472A43 /* default_user.png */; };
+		1F3C850F1316E70A00472A43 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C850E1316E70A00472A43 /* Base64.m */; };
+		1F3C85321316E7AC00472A43 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C852B1316E7AC00472A43 /* GTMNSString+HTML.m */; };
+		1F3C85331316E7AC00472A43 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F3C852C1316E7AC00472A43 /* LICENSE.txt */; };
+		1F3C85341316E7AC00472A43 /* QSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C852E1316E7AC00472A43 /* QSFileManager.m */; };
+		1F3C85351316E7AC00472A43 /* QSStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C85301316E7AC00472A43 /* QSStrings.m */; };
 		1F64ED5212935720003A8687 /* InformationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED3F12935720003A8687 /* InformationController.m */; };
 		1F64ED5312935720003A8687 /* InformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64ED4012935720003A8687 /* InformationController.xib */; };
 		1F64ED5412935720003A8687 /* ScheduleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64ED4312935720003A8687 /* ScheduleController.m */; };
@@ -92,6 +98,18 @@
 		1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubEventSpeakerViewController.xib; sourceTree = "<group>"; };
 		1F34FBF5130DFA8000032D3F /* SubEventSpeakersResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubEventSpeakersResultController.h; sourceTree = "<group>"; };
 		1F34FBF6130DFA8000032D3F /* SubEventSpeakersResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubEventSpeakersResultController.m; sourceTree = "<group>"; };
+		1F3C84BB1316E0B000472A43 /* default_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_user.png; sourceTree = "<group>"; };
+		1F3C850D1316E70A00472A43 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		1F3C850E1316E70A00472A43 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		1F3C85291316E7AC00472A43 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		1F3C852A1316E7AC00472A43 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		1F3C852B1316E7AC00472A43 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		1F3C852C1316E7AC00472A43 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		1F3C852D1316E7AC00472A43 /* QSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSFileManager.h; sourceTree = "<group>"; };
+		1F3C852E1316E7AC00472A43 /* QSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSFileManager.m; sourceTree = "<group>"; };
+		1F3C852F1316E7AC00472A43 /* QSStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSStrings.h; sourceTree = "<group>"; };
+		1F3C85301316E7AC00472A43 /* QSStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSStrings.m; sourceTree = "<group>"; };
+		1F3C85311316E7AC00472A43 /* QSUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSUtilities.h; sourceTree = "<group>"; };
 		1F64ED3E12935720003A8687 /* InformationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationController.h; sourceTree = "<group>"; };
 		1F64ED3F12935720003A8687 /* InformationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationController.m; sourceTree = "<group>"; };
 		1F64ED4012935720003A8687 /* InformationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationController.xib; sourceTree = "<group>"; };
@@ -217,6 +235,8 @@
 				1F34F58B13083B2800032D3F /* WebServices.m */,
 				1F34F5CA1308405F00032D3F /* EventLogic.h */,
 				1F34F5CB1308405F00032D3F /* EventLogic.m */,
+				1F3C850D1316E70A00472A43 /* Base64.h */,
+				1F3C850E1316E70A00472A43 /* Base64.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -231,6 +251,30 @@
 				1F34FBEC130DF69500032D3F /* SubEventSpeakerViewController.xib */,
 			);
 			name = SubEventSpeakers;
+			sourceTree = "<group>";
+		};
+		1F3C85261316E7A300472A43 /* QSString */ = {
+			isa = PBXGroup;
+			children = (
+				1F3C85281316E7AC00472A43 /* GTM */,
+				1F3C852C1316E7AC00472A43 /* LICENSE.txt */,
+				1F3C852D1316E7AC00472A43 /* QSFileManager.h */,
+				1F3C852E1316E7AC00472A43 /* QSFileManager.m */,
+				1F3C852F1316E7AC00472A43 /* QSStrings.h */,
+				1F3C85301316E7AC00472A43 /* QSStrings.m */,
+				1F3C85311316E7AC00472A43 /* QSUtilities.h */,
+			);
+			name = QSString;
+			sourceTree = "<group>";
+		};
+		1F3C85281316E7AC00472A43 /* GTM */ = {
+			isa = PBXGroup;
+			children = (
+				1F3C85291316E7AC00472A43 /* GTMDefines.h */,
+				1F3C852A1316E7AC00472A43 /* GTMNSString+HTML.h */,
+				1F3C852B1316E7AC00472A43 /* GTMNSString+HTML.m */,
+			);
+			path = GTM;
 			sourceTree = "<group>";
 		};
 		1F64ED3D12935720003A8687 /* Information */ = {
@@ -350,6 +394,7 @@
 		29B97314FDCFA39411CA2CEA /* TEDxAlcatraz */ = {
 			isa = PBXGroup;
 			children = (
+				1F3C85261316E7A300472A43 /* QSString */,
 				1FE6D52213005CB50054A4F1 /* CatchNotesLauncher */,
 				1F64ED761293575C003A8687 /* JSON */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -373,6 +418,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1F3C84BB1316E0B000472A43 /* default_user.png */,
 				1FCCA8F1131457E300DD24B6 /* Menu Icons */,
 				1F34FBCE130DEBBE00032D3F /* clock.png */,
 				1F34FBCC130DEB4D00032D3F /* button.png */,
@@ -503,6 +549,8 @@
 				1FCCA913131458A500DD24B6 /* scheduleon@2x.png in Resources */,
 				1FCCA914131458A500DD24B6 /* speakers@2x.png in Resources */,
 				1FCCA915131458A500DD24B6 /* speakerson@2x.png in Resources */,
+				1F3C84BC1316E0B000472A43 /* default_user.png in Resources */,
+				1F3C85331316E7AC00472A43 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +583,10 @@
 				1F34F5CC1308405F00032D3F /* EventLogic.m in Sources */,
 				1F34FBED130DF69500032D3F /* SubEventSpeakerViewController.m in Sources */,
 				1F34FBF7130DFA8000032D3F /* SubEventSpeakersResultController.m in Sources */,
+				1F3C850F1316E70A00472A43 /* Base64.m in Sources */,
+				1F3C85321316E7AC00472A43 /* GTMNSString+HTML.m in Sources */,
+				1F3C85341316E7AC00472A43 /* QSFileManager.m in Sources */,
+				1F3C85351316E7AC00472A43 /* QSStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

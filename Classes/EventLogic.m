@@ -87,6 +87,10 @@
 	
 	NSString *returnString = [[[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding] autorelease];
 	
+	if ([returnString isEqualToString: @""])
+	{
+		returnString = WEBSERVICE_DEFAULTJSON;
+	}
 	DLog(@"Speakers:%@", returnString);
 	
 	return [returnString JSONValue];

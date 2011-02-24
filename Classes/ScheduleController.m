@@ -35,6 +35,116 @@
 
 #define kTEDxAppsEventURL @"http://www.tedxapps.com/mobile/schedule/?EventId=%i"
 
+#define kAboutHtml @"<html> \
+<head> \
+<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /> \
+<meta name=\"viewport\" content=\"width=320\" /> \
+<style type=\"text/css\"> \
+body { \
+background-color:Black; \
+color:#cccccc; \
+margin: 0; \
+padding: 0; \
+font-weight: normal; \
+font-family: Arial, Helvetica, sans-serif; \
+} \
+\
+h2 \
+{ \
+margin-bottom:5px \
+} \
+\
+/* Speaker Photo */ \
+.speakerphoto \
+{ \
+width:150px; \
+padding:10px; \
+float:left; \
+} \
+\
+.speakertitle \
+{ \
+float:left; \
+clear:right; \
+margin:5px; \
+} \
+\
+.speakerdescription \
+{ \
+clear:both; \
+padding:20px; \
+} \
+\
+/* Content */ \
+.pages \
+{ \
+padding:15px; \
+} \
+\
+span.red \
+{ \
+color:Red; \
+} \
+\
+#main \
+{ \
+width:100%; \
+padding:10px; \
+} \
+\
+#about \
+{ \
+font-size:40px; \
+} \
+\
+/*Phones thats smaller than 480px*/ \
+@media only screen and (max-device-width: 480px) { \
+.speakerphoto \
+{ \
+width:140px; \
+} \
+.speakertitle \
+{ \
+width:150px; \
+} \
+\
+.pageimage \
+{ \
+width:300px; \
+} \
+} \
+\
+/*Phones thats smaller than 480px*/ \
+@media only screen and (max-device-width: 320px) { \
+.speakerphoto \
+{ \
+width:120px; \
+} \
+.speakertitle \
+{ \
+width:130px; \
+} \
+\
+.pageimage \
+{ \
+width:280px; \
+} \
+} \
+</style> \
+</head> \
+\
+<body> \
+<div class=\"pages\"> \
+For 2011, we are assembling a cast of characters capable of stirring the imagination as never before. Explorers, storytellers, photographers, scientific pioneers, visionaries and provocateurs from all parts of the globe.<br /> \
+<br /> \
+And we won’t be forgetting the other, harder-edged meaning of wonder -- where “I wonder” equals “I ponder.” We’ll be adding in strong servings of thoughtful insight, so that the possibilities we dream of are anchored in reality.<br /> \
+<br /> \
+One other change in 2011 is that, in response to community feedback this year, we are moving the conference one day earlier, so that it starts Monday evening and wraps up Friday afternoon. This allows people travel flexibility at weekends either side of the conference.  \
+</div> \
+</body> \
+</html>"
+
+
 @implementation ScheduleController
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -42,7 +152,7 @@
     [super viewDidLoad];
 	
 	[super setColouredBackgroundForWebView:[UIColor blackColor]];	
-	[super loadURLString:[NSString stringWithFormat:kTEDxAppsEventURL, [TEDxAlcatrazGlobal eventIdentifier]]];
+	[super loadLocalHTMLString:kAboutHtml];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

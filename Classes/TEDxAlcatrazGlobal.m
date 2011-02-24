@@ -34,6 +34,45 @@
 
 @implementation TEDxAlcatrazGlobal
 
+#define kImageFileNameFormat @"%d.dat"
+#define kImageCacheDirectoryName @"imagecache"
+
++(void)createTempPath {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *tempPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:kImageCacheDirectoryName]];
+	
+	if([[NSFileManager defaultManager] fileExistsAtPath:tempPath] == NO) {
+		NSError *error;
+		BOOL createdDir = [[NSFileManager defaultManager] createDirectoryAtPath:tempPath withIntermediateDirectories:YES attributes:nil error:&error];
+		
+		NSLog(@"Created Directory: %@ (Success:%d)", tempPath, createdDir);
+	}
+}
+
++(NSString*)tempPathForSpeakerImage:(NSDictionary*)speaker {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *tempPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:kImageCacheDirectoryName]];
+	
+	tempPath = [tempPath stringByAppendingPathComponent:[NSString stringWithFormat:kImageFileNameFormat, [TEDxAlcatrazGlobal speakerIdFromJSONData:speaker]]];
+	
+	return tempPath;
+}
+
++(UIImage*)imageForSpeaker:(NSDictionary*)speaker {
+	NSString* path = [self tempPathForSpeakerImage:speaker];
+	UIImage *image = nil;
+	
+	if([[NSFileManager defaultManager] fileExistsAtPath:path] == YES) {		
+		image = [[[UIImage alloc] initWithContentsOfFile:path] autorelease];
+		
+		DLog(@"Found image for speaker:Path:%@ (Image:%@)", path, image);
+	}
+	
+	return image;
+}
+
 +(NSString*)nameStringFromJSONData:(NSDictionary*)JSONDictionary {
 	DAssert([[JSONDictionary objectForKey:@"FirstName"] isKindOfClass:[NSString class]], @"FirstName is not a string");
 	DAssert([[JSONDictionary objectForKey:@"LastName"] isKindOfClass:[NSString class]], @"LastName Id is not a string");

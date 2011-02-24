@@ -79,6 +79,11 @@
 	[webView loadRequest:requestObj];
 }
 
+- (void)loadLocalHTMLString:(NSString*)URLString {
+	DLog(@"Loading Local HTML");
+	[webView loadHTMLString:URLString baseURL:nil];
+}
+
 #pragma mark -
 
 - (void)viewDidUnload {
