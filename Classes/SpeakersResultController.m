@@ -330,6 +330,7 @@
 	
 	[speakers release], speakers = nil;
 	[sessions release], sessions = nil;
+	self.switchFilter = nil;
 }
 
 
