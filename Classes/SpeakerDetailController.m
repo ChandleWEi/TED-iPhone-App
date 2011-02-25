@@ -170,6 +170,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[self setColouredBackgroundForWebView:[UIColor blackColor]];	
 	self.navigationItem.title = [TEDxAlcatrazGlobal nameStringFromJSONData:speakerDictionary];
 
 	//Set up WebView, just temporary to improve development speed
