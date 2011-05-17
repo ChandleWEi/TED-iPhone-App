@@ -48,8 +48,8 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
 	NSString *returnString = [[[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding] autorelease];
-	DLog(@"WebService:%@", returnString);
 	NSDictionary *responseDictionary = [returnString JSONValue];
+	DLog(@"WebService:%@", returnString);
 	return responseDictionary;
 }
 

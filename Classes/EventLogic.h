@@ -12,7 +12,7 @@
 @interface EventLogic : NSObject
 
 #pragma mark main Event
-+ (NSUInteger)getEventVersion : (NSInteger)eventId;
++ (NSInteger)getEventVersion : (NSInteger)eventId;
 
 + (NSArray *)getEventSessionsFromWebService;
 
@@ -24,15 +24,13 @@
 
 + (NSArray *)getSubEventSessionsFromCache;
 
-+ (NSArray *)getSpeakersBySubEventWebService : (NSString *)requestString EventVersion : (NSInteger)version;
++ (NSArray *)getSpeakersByEventWebService:(NSInteger)eventId Version:(NSInteger)version;
 
 + (NSArray *)getSpeakersBySubEventFromCache;
 #pragma mark shared
 + (NSInteger)getCurrentSession:(NSArray *)sessions;
 
 + (NSString *)getSessionNameBySessionId:(NSInteger)session data:(NSArray *)sessions;
-
-+ (NSArray *)getSpeakersByEventWebService : (NSString *)requestString EventVersion : (NSInteger)version;
 
 + (NSInteger)getRowsBySectionNumber : (NSArray *)data section : (NSInteger)Section;
 

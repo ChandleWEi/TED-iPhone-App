@@ -80,8 +80,12 @@
 +(NSString *)sessionNameFromJSONData:(NSDictionary*)JSONDictionary;
 
 +(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary;
+
 // returns the TEDxVenue dictionary from the Info.plist, which contains the venue id, address, etc
 +(NSDictionary*)venueDictionary;
+
+// returns the FusionTableCalls dictionary from the Info.plist, which contains all the webservice calls to fusion table
++(NSDictionary*)fusionTableDictionary;
 
 // returns the event id from the TEDxVenue dictionary in the Info.plist
 +(NSUInteger)eventIdentifier;

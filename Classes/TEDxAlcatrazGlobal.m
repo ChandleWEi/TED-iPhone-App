@@ -187,6 +187,16 @@
 	return emailAddress;
 }
 
+
++(NSDictionary*)fusionTableDictionary{
+	NSDictionary *FusionTableCalls = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FusionTableCalls"];
+	
+	DAssert(FusionTableCalls != nil, @"the fusion table is missing from the Info.plist");
+	
+	return FusionTableCalls;    
+}
+
+
 +(NSInteger)eventVersion {
 	return [[NSUserDefaults standardUserDefaults] integerForKey:EVENT_VERSION];
 }

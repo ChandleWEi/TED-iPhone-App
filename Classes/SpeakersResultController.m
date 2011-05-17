@@ -115,31 +115,27 @@
 #pragma mark getting data
 
 -(void)getSpeakersInBackground {	
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
 	[speakers release];
 
-
 	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal eventIdentifier]];
+    
 	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
 	{
 		speakers = [[EventLogic getSpeakersByEventFromCache] retain];
 		sessions = [[EventLogic getEventSessionsFromCache] retain];
 	}
 	else {
-		NSString *requestString = [NSString stringWithFormat:
-								   @"http://www.tedxapps.com/wsdl/TEDxService.svc/GetSpeakersByEventId?eventid=%i&page=%i",
-								   [TEDxAlcatrazGlobal eventIdentifier],
-								   kPages];
-		
-		speakers = [[EventLogic getSpeakersByEventWebService:requestString EventVersion:eventVersion] retain];
+        speakers = [[EventLogic getSpeakersByEventWebService:[TEDxAlcatrazGlobal eventIdentifier] Version:eventVersion] retain];
 		sessions = [[EventLogic getEventSessionsFromWebService] retain];
 	}
+    NSLog(@"speakers: %@", speakers);
 
 	
 	[[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 	
-	[pool drain];
+//	[pool drain];
 }
 
 // this is a stop-gap solution as we really need to be caching these images, not downloading them each time

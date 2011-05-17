@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>catchted</string>
-			</array>
-			<key>CFBundleURLName</key>
-			<string>com.catch.ted</string>
-		</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -30,28 +19,75 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.catchnotes.tedapp</string>
-	<key>UIPrerenderedIcon</key>
-	<false/>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>CATH</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
+	<key>CFBundleSignature</key>
+	<string>CATH</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.catch.ted</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>catchted</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>FusionTableCalls</key>
+	<dict>
+		<key>GetEventAbout</key>
+		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+About+FROM+561503+WHERE+EventId%3D{eventid}&amp;amp;jsonCallback=</string>
+		<key>GetEventAboutCallBack</key>
+		<string>about</string>
+		<key>GetEventSessions</key>
+		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+SessionId%2C+SessionTime%2C+SessionName+FROM+560983+WHERE+EventId%3D{eventid}&amp;jsonCallback=</string>
+		<key>GetEventSessionsCallBack</key>
+		<string>sessions</string>
+		<key>GetEventSpeakers</key>
+		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+SpeakerId,+EventId,+SpeakerOrder,+FirstName,+LastName,+Title,+Topic,+Facebook,+Email,+Website,+Twitter,+Description,+PhotoUrl,+ScheduleDate,+Session+FROM+561408+WHERE+EventId=%d&amp;jsonCallback=</string>
+		<key>GetEventSpeakersCallBack</key>
+		<string>speakers</string>
+		<key>GetEventVersion</key>
+		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+EventVersion+FROM+561503+WHERE+EventId=%d&amp;jsonCallback=</string>
+		<key>GetEventVersionCallBack</key>
+		<string>version</string>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<false/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>TEDVenue</key>
+	<dict>
+		<key>Address</key>
+		<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
+		<key>EmailAddress</key>
+		<string>peter@catch.com</string>
+		<key>EventId</key>
+		<integer>19</integer>
+		<key>Latitude</key>
+		<real>33.765003</real>
+		<key>Longitude</key>
+		<string>-118.189523</string>
+		<key>Name</key>
+		<string>Long Beach Convention and Entertainment Center</string>
+		<key>SubEventId</key>
+		<string>18</string>
+	</dict>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationPortrait</string>
+	<key>UIPrerenderedIcon</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -59,22 +95,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>TEDVenue</key>
-	<dict>
-		<key>EventId</key>
-		<integer>19</integer>
-		<key>SubEventId</key>
-		<string>18</string>
-		<key>Name</key>
-		<string>Long Beach Convention and Entertainment Center</string>
-		<key>Address</key>
-		<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
-		<key>Latitude</key>
-		<real>33.765003</real>
-		<key>Longitude</key>
-		<string>-118.189523</string>
-		<key>EmailAddress</key>
-		<string>peter@catch.com</string>
-	</dict>
 </dict>
 </plist>

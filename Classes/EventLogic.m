@@ -10,25 +10,26 @@
 #import "TEDxAlcatrazGlobal.h"
 #import "WebServices.h"
 #import "JSON.h"
+#import "FusionTableReader.h"
 
 @implementation EventLogic
 
-+ (NSUInteger)getEventVersion : (NSInteger)eventId
++ (NSInteger)getEventVersion : (NSInteger)eventId
 {
-	NSString *Action = WEBSERVICE_GETEVENTVERSION;
+    NSDictionary *fusiontablecalls = [TEDxAlcatrazGlobal fusionTableDictionary];
+                                    
+    NSString *fusionquery = [NSString stringWithFormat:[fusiontablecalls objectForKey:@"GetEventVersion"], eventId];
+    NSString *fusionquerycallback = [fusiontablecalls objectForKey:@"GetEventVersionCallBack"];    
 	
-	NSDictionary *JSONData = [NSDictionary dictionaryWithObjectsAndKeys:
-							 [NSNumber numberWithInteger:eventId],		@"EventId",						  
-							  nil];
-	
-	NSDictionary *responseDictionary = [WebServices CallWebServicePOST:JSONData webService:Action];
-	
-	NSInteger ret = 0;
-	
-	if ([(NSNumber *)[responseDictionary objectForKey:@"IsSuccessful"] boolValue]) {
-		ret = [[responseDictionary objectForKey:@"EventVersion"] intValue];
+    NSData *data = [FusionTableReader getSearchResultsByUrl:fusionquery type:fusionquerycallback];     
+
+    NSArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    NSUInteger ret = 0;
+	if (responseDictionary != nil) {
+		ret = [[[responseDictionary objectAtIndex:0] objectForKey:@"EventVersion"] intValue];
 	}
-	
+
 	return ret;
 }
 
@@ -65,35 +66,34 @@
 }
 
 
-+ (NSArray *)getSpeakersByEventWebService : (NSString *)requestString EventVersion : (NSInteger)version
-{
-	NSData *returnData = [WebServices CallWebServiceGETArray:requestString];
++ (NSArray *)getSpeakersByEventWebService:(NSInteger)eventId Version:(NSInteger)version
+{ 
+    
+    NSDictionary *fusiontablecalls = [TEDxAlcatrazGlobal fusionTableDictionary];
+    
+    NSString *fusionquery = [NSString stringWithFormat:[fusiontablecalls objectForKey:@"GetEventSpeakers"], eventId];
+    NSString *fusionquerycallback = [fusiontablecalls objectForKey:@"GetEventSpeakersCallBack"];    
 	
-	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:returnData] forKey:EVENT_SPEAKER_DATA];
+    NSData *data = [FusionTableReader getSearchResultsByUrl:fusionquery type:fusionquerycallback];     
+    
+    NSArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseDictionary] forKey:EVENT_SPEAKER_DATA];
 	[[NSUserDefaults standardUserDefaults] setInteger:version forKey:EVENT_VERSION];
-	
-	
-	NSString *returnString = [[[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding] autorelease];
-	
-	DLog(@"Speakers:%@", returnString);
-	
-	return [returnString JSONValue];
+    
+    DLog(@"Speakers:%@", responseDictionary);
+    
+	return responseDictionary;
 }
 
 + (NSArray *)getSpeakersByEventFromCache
 {
 	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:EVENT_SPEAKER_DATA];
-	NSData *returnData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	NSArray *returnData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+	DLog(@"Speakers:%@", returnData);
 	
-	NSString *returnString = [[[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding] autorelease];
-	
-	if ([returnString isEqualToString: @""])
-	{
-		returnString = WEBSERVICE_DEFAULTJSON;
-	}
-	DLog(@"Speakers:%@", returnString);
-	
-	return [returnString JSONValue];
+	return returnData;
 }
 
 #pragma mark subEvent -- The reason why I am not reusing the method here is because subEvent isn't being used in majority of the cases
