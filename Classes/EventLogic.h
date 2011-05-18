@@ -14,19 +14,13 @@
 #pragma mark main Event
 + (NSInteger)getEventVersion : (NSInteger)eventId;
 
-+ (NSArray *)getEventSessionsFromWebService;
++ (NSArray *)getEventSessionsFromWebService:(NSInteger)eventId;
 
-+ (NSArray *)getEventSessionsFromCache;
++ (NSArray *)getEventSessionsFromCache:(NSInteger)eventId;
 
-+ (NSArray *)getSpeakersByEventFromCache;
-#pragma mark main SubEvent
-+ (NSArray *)getSubEventSessionsFromWebService;
-
-+ (NSArray *)getSubEventSessionsFromCache;
++ (NSArray *)getSpeakersByEventFromCache:(NSInteger)eventId;
 
 + (NSArray *)getSpeakersByEventWebService:(NSInteger)eventId Version:(NSInteger)version;
-
-+ (NSArray *)getSpeakersBySubEventFromCache;
 #pragma mark shared
 + (NSInteger)getCurrentSession:(NSArray *)sessions;
 

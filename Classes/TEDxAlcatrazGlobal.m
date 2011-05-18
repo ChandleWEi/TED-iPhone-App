@@ -131,10 +131,12 @@
 	return [[JSONDictionary objectForKey:@"SpeakerId"] intValue];
 }
 
-+(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"Session"] isKindOfClass:[NSNumber class]], @"Session is not a number");
-	
++(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary {    
 	return [[JSONDictionary objectForKey:@"Session"] intValue];
+}
+
++(NSInteger)sessionIdFromJSONData:(NSDictionary*)JSONDictionary {
+	return [[JSONDictionary objectForKey:@"SessionId"] intValue];
 }
 
 +(NSString *)sessionNameFromJSONData:(NSDictionary*)JSONDictionary {

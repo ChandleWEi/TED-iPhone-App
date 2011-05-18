@@ -77,6 +77,8 @@
 
 +(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary;
 
++(NSInteger)sessionIdFromJSONData:(NSDictionary*)JSONDictionary;
+
 +(NSString *)sessionNameFromJSONData:(NSDictionary*)JSONDictionary;
 
 +(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary;

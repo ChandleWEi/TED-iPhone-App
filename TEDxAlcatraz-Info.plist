@@ -45,11 +45,11 @@
 	<key>FusionTableCalls</key>
 	<dict>
 		<key>GetEventAbout</key>
-		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+About+FROM+561503+WHERE+EventId%3D{eventid}&amp;amp;jsonCallback=</string>
+		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+About+FROM+561503+WHERE+EventId=%d&amp;jsonCallback=</string>
 		<key>GetEventAboutCallBack</key>
 		<string>about</string>
 		<key>GetEventSessions</key>
-		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+SessionId%2C+SessionTime%2C+SessionName+FROM+560983+WHERE+EventId%3D{eventid}&amp;jsonCallback=</string>
+		<string>https://www.google.com/fusiontables/api/query?sql=SELECT+SessionId,+SessionTime,+SessionName+FROM+560983+WHERE+EventId=%d&amp;jsonCallback=</string>
 		<key>GetEventSessionsCallBack</key>
 		<string>sessions</string>
 		<key>GetEventSpeakers</key>

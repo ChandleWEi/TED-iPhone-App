@@ -33,31 +33,27 @@
 	return ret;
 }
 
-+ (NSArray *)getEventSessionsFromWebService
++ (NSArray *)getEventSessionsFromWebService:(NSInteger)eventId
 {
-	NSString *Action = WEBSERVICE_GETEVENTSESSIONBYEVENTID;
+    NSDictionary *fusiontablecalls = [TEDxAlcatrazGlobal fusionTableDictionary];
+    
+    NSString *fusionquery = [NSString stringWithFormat:[fusiontablecalls objectForKey:@"GetEventSessions"], eventId];
+    NSString *fusionquerycallback = [fusiontablecalls objectForKey:@"GetEventSessionsCallBack"];    
 	
-	NSDictionary *JSONData = [NSDictionary dictionaryWithObjectsAndKeys:
-							  [NSNumber numberWithInteger:[TEDxAlcatrazGlobal eventIdentifier]],		@"EventId",						  
-							  nil];
-	
-	NSDictionary *responseDictionary = [WebServices CallWebServicePOST:JSONData webService:Action];
-	
-	NSArray *ret = [[NSArray alloc] autorelease];
-	
-	if ([(NSNumber *)[responseDictionary objectForKey:@"IsSuccessful"] boolValue]) {
-		ret = [responseDictionary objectForKey:@"Sessions"];
-		[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:ret] forKey:EVENT_SESSION_DATA];
-	}
-	
-	DLog(@"EventSession:%@", ret);
-
-	return ret;
+    NSData *data = [FusionTableReader getSearchResultsByUrl:fusionquery type:fusionquerycallback];     
+    
+    NSArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseDictionary] forKey:[NSString stringWithFormat:@"%@%d", EVENT_SESSION_DATA, eventId]];
+    
+    DLog(@"Sessions:%@", responseDictionary);
+    
+	return responseDictionary;
 }
 
-+ (NSArray *)getEventSessionsFromCache
++ (NSArray *)getEventSessionsFromCache:(NSInteger)eventId
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:EVENT_SESSION_DATA];
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%d", EVENT_SESSION_DATA, eventId]];
 	NSArray *returnString = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 	
 	DLog(@"EventSession:%@", returnString);
@@ -67,8 +63,7 @@
 
 
 + (NSArray *)getSpeakersByEventWebService:(NSInteger)eventId Version:(NSInteger)version
-{ 
-    
+{
     NSDictionary *fusiontablecalls = [TEDxAlcatrazGlobal fusionTableDictionary];
     
     NSString *fusionquery = [NSString stringWithFormat:[fusiontablecalls objectForKey:@"GetEventSpeakers"], eventId];
@@ -78,7 +73,7 @@
     
     NSArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
-    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseDictionary] forKey:EVENT_SPEAKER_DATA];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseDictionary] forKey:[NSString stringWithFormat:@"%@%d", EVENT_SPEAKER_DATA, eventId]];
 	[[NSUserDefaults standardUserDefaults] setInteger:version forKey:EVENT_VERSION];
     
     DLog(@"Speakers:%@", responseDictionary);
@@ -86,80 +81,15 @@
 	return responseDictionary;
 }
 
-+ (NSArray *)getSpeakersByEventFromCache
++ (NSArray *)getSpeakersByEventFromCache:(NSInteger)eventId;
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:EVENT_SPEAKER_DATA];
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%d", EVENT_SPEAKER_DATA, eventId]];
 	NSArray *returnData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
 	DLog(@"Speakers:%@", returnData);
 	
 	return returnData;
 }
-
-#pragma mark subEvent -- The reason why I am not reusing the method here is because subEvent isn't being used in majority of the cases
-#pragma mark subEvent -- This might be changed
-
-+ (NSArray *)getSubEventSessionsFromWebService
-{
-	NSString *Action = WEBSERVICE_GETEVENTSESSIONBYEVENTID;
-	
-	NSDictionary *JSONData = [NSDictionary dictionaryWithObjectsAndKeys:
-							  [NSNumber numberWithInteger:[TEDxAlcatrazGlobal subEventIdentifier]],		@"EventId",						  
-							  nil];
-	
-	NSDictionary *responseDictionary = [WebServices CallWebServicePOST:JSONData webService:Action];
-	
-	NSArray *ret = [[NSArray alloc] autorelease];
-	
-	if ([(NSNumber *)[responseDictionary objectForKey:@"IsSuccessful"] boolValue]) {
-		ret = [responseDictionary objectForKey:@"Sessions"];
-		[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:ret] forKey:SUB_EVENT_SESSION_DATA];
-	}
-	
-	DLog(@"EventSession:%@", ret);
-	
-	return ret;
-	
-}
-
-+ (NSArray *)getSubEventSessionsFromCache
-{
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:SUB_EVENT_SESSION_DATA];
-	NSArray *returnString = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	
-	DLog(@"EventSession:%@", returnString);
-	
-	return returnString;
-}
-
-+ (NSArray *)getSpeakersBySubEventWebService : (NSString *)requestString EventVersion : (NSInteger)version
-{
-	NSData *returnData = [WebServices CallWebServiceGETArray:requestString];
-	
-	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:returnData] forKey:SUB_EVENT_SPEAKER_DATA];
-	[[NSUserDefaults standardUserDefaults] setInteger:version forKey:SUB_EVENT_VERSION];
-	
-	
-	NSString *returnString = [[[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding] autorelease];
-	
-	DLog(@"Speakers:%@", returnString);
-	
-	return [returnString JSONValue];
-}
-
-+ (NSArray *)getSpeakersBySubEventFromCache
-{
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:SUB_EVENT_SPEAKER_DATA];
-	NSData *returnData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	
-	NSString *returnString = [[[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding] autorelease];
-	
-	DLog(@"Speakers:%@", returnString);
-	
-	return [returnString JSONValue];
-}
-
-
 
 +(int)dateDiff:(NSDate*)firstday lastday:(NSDate*)lastday {
 	NSDate *startDate = firstday;
@@ -198,7 +128,7 @@
 	if(sessions != nil)
 	{
 		for (int i = 0; i < [sessions count]; i++) {
-			if (session == [TEDxAlcatrazGlobal sessionFromJSONData:[sessions objectAtIndex:i]]) {
+			if (session == [TEDxAlcatrazGlobal sessionIdFromJSONData:[sessions objectAtIndex:i]]) {
 				[ret appendString: @": "];
 				[ret appendString: [TEDxAlcatrazGlobal sessionNameFromJSONData:[sessions objectAtIndex:i]]];
 			}
@@ -221,14 +151,17 @@
 
 + (NSArray *)getSpeakersBySection : (NSArray *)data section : (NSInteger)Section
 {
+    NSLog(@"data:%@", data);
+
 	NSMutableArray *returnData = [NSMutableArray arrayWithArray:data];
 	for (int i = 0; i < [returnData count]; i++) {
-		if ([TEDxAlcatrazGlobal sessionFromJSONData:[returnData objectAtIndex:i]] != Section + 1) {			
+		if ([TEDxAlcatrazGlobal sessionIdFromJSONData:[returnData objectAtIndex:i]] != Section + 1) {			
 			[returnData removeObjectAtIndex:i];
 			i--;
 		}
 	}
 
-	return (NSArray *)returnData;
+    NSLog(@"Array:%@", returnData);
+	return [NSArray arrayWithArray:returnData];
 }
 @end

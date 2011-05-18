@@ -123,12 +123,12 @@
     
 	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
 	{
-		speakers = [[EventLogic getSpeakersByEventFromCache] retain];
-		sessions = [[EventLogic getEventSessionsFromCache] retain];
+		speakers = [[EventLogic getSpeakersByEventFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
+		sessions = [[EventLogic getEventSessionsFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}
 	else {
         speakers = [[EventLogic getSpeakersByEventWebService:[TEDxAlcatrazGlobal eventIdentifier] Version:eventVersion] retain];
-		sessions = [[EventLogic getEventSessionsFromWebService] retain];
+		sessions = [[EventLogic getEventSessionsFromWebService:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}
     NSLog(@"speakers: %@", speakers);
 

@@ -112,20 +112,15 @@
 	
 	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal subEventIdentifier]];
 
-	if([TEDxAlcatrazGlobal subEventIdentifier] == eventVersion || eventVersion == 0)
+	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
 	{
-		speakers = [[EventLogic getSpeakersBySubEventFromCache] retain];
-		sessions = [[EventLogic getSubEventSessionsFromCache] retain];
+		speakers = [[EventLogic getSpeakersByEventFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
+		sessions = [[EventLogic getEventSessionsFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}
 	else {
-		NSString *requestString = [NSString stringWithFormat:
-								   @"http://www.tedxapps.com/wsdl/TEDxService.svc/GetSpeakersByEventId?eventid=%i&page=%i",
-								   [TEDxAlcatrazGlobal subEventIdentifier],
-								   kPages];
-		speakers = [[EventLogic getSpeakersBySubEventWebService:requestString EventVersion:eventVersion] retain];
-		sessions = [[EventLogic getSubEventSessionsFromWebService] retain];
+        speakers = [[EventLogic getSpeakersByEventWebService:[TEDxAlcatrazGlobal eventIdentifier] Version:eventVersion] retain];
+		sessions = [[EventLogic getEventSessionsFromWebService:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}
-	
 	
 	[[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 	
