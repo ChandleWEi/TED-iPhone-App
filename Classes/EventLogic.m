@@ -151,17 +151,13 @@
 
 + (NSArray *)getSpeakersBySection : (NSArray *)data section : (NSInteger)Section
 {
-    NSLog(@"data:%@", data);
-
 	NSMutableArray *returnData = [NSMutableArray arrayWithArray:data];
 	for (int i = 0; i < [returnData count]; i++) {
-		if ([TEDxAlcatrazGlobal sessionIdFromJSONData:[returnData objectAtIndex:i]] != Section + 1) {			
+		if ([TEDxAlcatrazGlobal sessionFromJSONData:[returnData objectAtIndex:i]] != Section + 1) {			
 			[returnData removeObjectAtIndex:i];
 			i--;
 		}
 	}
-
-    NSLog(@"Array:%@", returnData);
 	return [NSArray arrayWithArray:returnData];
 }
 @end
