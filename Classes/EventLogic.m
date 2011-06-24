@@ -33,6 +33,25 @@
 	return ret;
 }
 
++ (NSString *)getEventAbout : (NSInteger)eventId
+{
+    NSDictionary *fusiontablecalls = [TEDxAlcatrazGlobal fusionTableDictionary];
+    
+    NSString *fusionquery = [NSString stringWithFormat:[fusiontablecalls objectForKey:@"GetEventAbout"], eventId];
+    NSString *fusionquerycallback = [fusiontablecalls objectForKey:@"GetEventAboutCallBack"];    
+	
+    NSData *data = [FusionTableReader getSearchResultsByUrl:fusionquery type:fusionquerycallback];     
+    
+    NSArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+    NSString *ret = @"";
+	if (responseDictionary != nil) {
+		ret = [[responseDictionary objectAtIndex:0] objectForKey:@"About"];
+	}
+    
+	return ret;
+}
+
 + (NSArray *)getEventSessionsFromWebService:(NSInteger)eventId
 {
     NSDictionary *fusiontablecalls = [TEDxAlcatrazGlobal fusionTableDictionary];

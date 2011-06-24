@@ -184,7 +184,6 @@
 	
 	UIImage *userimage;
 	
-	NSLog(@"%@", [TEDxAlcatrazGlobal tempPathForSpeakerImage:speakerDictionary]);
 	if ([[TEDxAlcatrazGlobal tempPathForSpeakerImage:speakerDictionary] isEqualToString:@""]) {
 		userimage = [UIImage imageNamed:@"default_user.png"];
 	}

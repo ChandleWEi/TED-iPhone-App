@@ -30,7 +30,7 @@
 //
 
 #import "ScheduleController.h"
-
+#import "EventLogic.h"
 #import "TEDxAlcatrazGlobal.h"
 
 #define kTEDxAppsEventURL @"http://www.tedxapps.com/mobile/schedule/?EventId=%i"
@@ -135,11 +135,7 @@ width:280px; \
 \
 <body> \
 <div class=\"pages\"> \
-For 2011, we are assembling a cast of characters capable of stirring the imagination as never before. Explorers, storytellers, photographers, scientific pioneers, visionaries and provocateurs from all parts of the globe.<br /> \
-<br /> \
-And we won’t be forgetting the other, harder-edged meaning of wonder -- where “I wonder” equals “I ponder.” We’ll be adding in strong servings of thoughtful insight, so that the possibilities we dream of are anchored in reality.<br /> \
-<br /> \
-One other change in 2011 is that, in response to community feedback this year, we are moving the conference one day earlier, so that it starts Monday evening and wraps up Friday afternoon. This allows people travel flexibility at weekends either side of the conference.  \
+%@ \
 </div> \
 </body> \
 </html>"
@@ -150,9 +146,10 @@ One other change in 2011 is that, in response to community feedback this year, w
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAbout:[TEDxAlcatrazGlobal eventIdentifier]]];
+    
 	[super setColouredBackgroundForWebView:[UIColor blackColor]];	
-	[super loadLocalHTMLString:kAboutHtml];
+	[super loadLocalHTMLString:eventAbout];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -163,6 +160,13 @@ One other change in 2011 is that, in response to community feedback this year, w
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
+}
+
+#pragma mark -
+
+- (void)dealloc {
+	[eventAbout release];
+    [super dealloc];
 }
 
 @end

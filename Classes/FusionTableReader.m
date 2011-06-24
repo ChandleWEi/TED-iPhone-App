@@ -36,13 +36,13 @@
     
     NSString *fusionstring = [[[NSString alloc] initWithData:unstructuredData encoding:NSUTF8StringEncoding] autorelease];
                                       
-    NSDictionary *fusionret = [[[[fusionstring substringToIndex: [fusionstring length] - 2] substringFromIndex:[type length] + 1] autorelease] JSONValue];
+    NSDictionary *fusionret = [[[fusionstring substringToIndex: [fusionstring length] - 2] substringFromIndex:[type length] + 1] JSONValue];
     
-    NSDictionary *table = [[fusionret valueForKey:@"table"] autorelease];
+    NSDictionary *table = [fusionret valueForKey:@"table"];
         
-    NSArray *cols = [[table valueForKey:@"cols"] autorelease];
+    NSArray *cols = [table valueForKey:@"cols"];
     
-    NSArray *rows = [[table valueForKey:@"rows"] autorelease];
+    NSArray *rows = [table valueForKey:@"rows"];
     
     NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
 
@@ -57,13 +57,13 @@
 
 + (NSDictionary *) AddObject:(NSArray *)cols Rows:(NSArray *)rows
 {
-    NSMutableDictionary *ret = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *ret = [[[NSMutableDictionary alloc] init] autorelease]; 
     for (int i = 0; i < [cols count]; i++)
     {
         [ret setObject:[rows objectAtIndex:i] forKey:[cols objectAtIndex:i]];
     }
     
-    return [[NSDictionary alloc] initWithDictionary:ret];
+    return [[[NSDictionary alloc] initWithDictionary:ret] autorelease];
 }
 
 @end

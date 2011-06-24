@@ -33,5 +33,7 @@
 #import "WebViewControllerBaseClass.h"
 
 @interface ScheduleController : WebViewControllerBaseClass 
-
+{
+    NSString *eventAbout;
+}
 @end

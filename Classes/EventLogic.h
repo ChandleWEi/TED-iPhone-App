@@ -14,6 +14,8 @@
 #pragma mark main Event
 + (NSInteger)getEventVersion : (NSInteger)eventId;
 
++ (NSString *)getEventAbout : (NSInteger)eventId;
+
 + (NSArray *)getEventSessionsFromWebService:(NSInteger)eventId;
 
 + (NSArray *)getEventSessionsFromCache:(NSInteger)eventId;
