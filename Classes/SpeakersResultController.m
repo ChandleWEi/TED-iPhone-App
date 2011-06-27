@@ -34,7 +34,6 @@
 #import "SpeakersResultTableViewCell.h"
 #import "SpeakerDetailController.h"
 #import "JSON.h"
-#import "WebServices.h"
 #import "TEDxAlcatrazGlobal.h"
 #import "EventLogic.h"
 

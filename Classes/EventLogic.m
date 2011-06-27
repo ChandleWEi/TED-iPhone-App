@@ -8,7 +8,6 @@
 
 #import "EventLogic.h"
 #import "TEDxAlcatrazGlobal.h"
-#import "WebServices.h"
 #import "JSON.h"
 #import "FusionTableReader.h"
 
