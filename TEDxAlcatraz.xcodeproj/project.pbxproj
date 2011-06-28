@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1F1F3E9713B8DC210068349F /* ArchivedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F3E9513B8DC210068349F /* ArchivedViewController.m */; };
+		1F1F3E9813B8DC210068349F /* ArchivedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F3E9613B8DC210068349F /* ArchivedViewController.xib */; };
 		1F24DD90137C09750017BEEE /* FusionTableReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F24DD8F137C09750017BEEE /* FusionTableReader.m */; };
 		1F2F88D61302FF8000D75D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F88D51302FF8000D75D92 /* QuartzCore.framework */; };
 		1F34F5CC1308405F00032D3F /* EventLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F34F5CB1308405F00032D3F /* EventLogic.m */; };
@@ -81,8 +83,11 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TEDxAlcatrazAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEDxAlcatrazAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TEDxAlcatrazAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDxAlcatrazAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* TEDxAlcatraz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEDxAlcatraz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* TEDGlobal 2011.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TEDGlobal 2011.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F1F3E9413B8DC210068349F /* ArchivedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivedViewController.h; sourceTree = "<group>"; };
+		1F1F3E9513B8DC210068349F /* ArchivedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivedViewController.m; sourceTree = "<group>"; };
+		1F1F3E9613B8DC210068349F /* ArchivedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchivedViewController.xib; sourceTree = "<group>"; };
 		1F24DD8E137C09750017BEEE /* FusionTableReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FusionTableReader.h; sourceTree = "<group>"; };
 		1F24DD8F137C09750017BEEE /* FusionTableReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FusionTableReader.m; sourceTree = "<group>"; };
 		1F2F88D51302FF8000D75D92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -197,6 +202,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1F1F3E9213B8DBE30068349F /* Archived */,
 				1F34F57413083B1900032D3F /* Utility */,
 				663B9B0212D209BA00C75B08 /* WebViewControllerBaseClass */,
 				1F64ED4E12935720003A8687 /* Map */,
@@ -215,9 +221,19 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* TEDxAlcatraz.app */,
+				1D6058910D05DD3D006BFB54 /* TEDGlobal 2011.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1F1F3E9213B8DBE30068349F /* Archived */ = {
+			isa = PBXGroup;
+			children = (
+				1F1F3E9413B8DC210068349F /* ArchivedViewController.h */,
+				1F1F3E9513B8DC210068349F /* ArchivedViewController.m */,
+				1F1F3E9613B8DC210068349F /* ArchivedViewController.xib */,
+			);
+			name = Archived;
 			sourceTree = "<group>";
 		};
 		1F34F57413083B1900032D3F /* Utility */ = {
@@ -467,7 +483,7 @@
 			);
 			name = TEDxAlcatraz;
 			productName = TEDxAlcatraz;
-			productReference = 1D6058910D05DD3D006BFB54 /* TEDxAlcatraz.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* TEDGlobal 2011.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -537,6 +553,7 @@
 				1F3C84BC1316E0B000472A43 /* default_user.png in Resources */,
 				1F58B6A0131710CD00A1163C /* SpeakersResultController.xib in Resources */,
 				1FDC4247131716580049CE8B /* SubEventSpeakersResultController.xib in Resources */,
+				1F1F3E9813B8DC210068349F /* ArchivedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +588,7 @@
 				1F58B69F131710CD00A1163C /* SpeakersResultController.m in Sources */,
 				1FDC4246131716580049CE8B /* SubEventSpeakersResultController.m in Sources */,
 				1F24DD90137C09750017BEEE /* FusionTableReader.m in Sources */,
+				1F1F3E9713B8DC210068349F /* ArchivedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,11 +606,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TEDxAlcatraz_Prefix.pch;
 				INFOPLIST_FILE = "TEDxAlcatraz-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = TEDxAlcatraz;
+				PRODUCT_NAME = "TEDGlobal 2011";
 			};
 			name = Debug;
 		};
@@ -605,11 +624,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TEDxAlcatraz_Prefix.pch;
 				INFOPLIST_FILE = "TEDxAlcatraz-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = TEDxAlcatraz;
+				PRODUCT_NAME = "TEDGlobal 2011";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

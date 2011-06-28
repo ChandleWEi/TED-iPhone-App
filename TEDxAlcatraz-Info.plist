@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>TED 2011</string>
+	<string>TEDGlobal 2011</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
@@ -94,6 +94,27 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>Archive</key>
+	<array>
+		<dict>
+			<key>TEDVenue</key>
+			<string>TED2011</string>
+			<key>Address</key>
+			<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
+			<key>EmailAddress</key>
+			<string>peter@catch.com</string>
+			<key>EventId</key>
+			<integer>19</integer>
+			<key>Latitude</key>
+			<real>33.765003</real>
+			<key>Longitude</key>
+			<string>-118.189523</string>
+			<key>Name</key>
+			<string>Long Beach Convention and Entertainment Center</string>
+			<key>SubEventId</key>
+			<string>18</string>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -34,9 +34,11 @@
 
 @interface MapController : UIViewController <MKMapViewDelegate> {	
 	MKMapView *mapView;
+    UIBarButtonItem *btnDirection;
 }
 
 @property (retain, nonatomic) IBOutlet MKMapView*  mapView;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *btnDirection;
 
 -(IBAction)btnDirection_Clicked;
 

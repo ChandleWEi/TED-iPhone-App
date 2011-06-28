@@ -33,8 +33,6 @@
 #import "EventLogic.h"
 #import "TEDxAlcatrazGlobal.h"
 
-#define kTEDxAppsEventURL @"http://www.tedxapps.com/mobile/schedule/?EventId=%i"
-
 #define kAboutHtml @"<html> \
 <head> \
 <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /> \

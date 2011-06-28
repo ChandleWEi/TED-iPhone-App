@@ -31,11 +31,117 @@
 
 #import "InformationController.h"
 #import "TEDxAlcatrazGlobal.h"
+#import "EventLogic.h"
 
-#define kTEDxInformationURL @"http://www.tedxapps.com/mobile/about/?EventId=%d"
-#define kTEDxMailToSubject @"iPhone TEDx Question"
-#define kTEDxMailToBody @"Dear TEDx Organiser"
-#define kTEDxMailToURL @"mailto:%@?subject=iPhone TEDx Question&body=Dear TEDx Organiser"
+#define kTEDxMailToSubject @"iPhone TED2011 Question"
+#define kTEDxMailToBody @"Dear Programmer"
+#define kTEDxMailToURL @"mailto:%@?subject=iPhone TED Question&body=Dear TED Organiser"
+
+
+#define kAboutHtml @"<html> \
+<head> \
+<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\" /> \
+<meta name=\"viewport\" content=\"width=320\" /> \
+<style type=\"text/css\"> \
+body { \
+background-color:Black; \
+color:#cccccc; \
+margin: 0; \
+padding: 0; \
+font-weight: normal; \
+font-family: Arial, Helvetica, sans-serif; \
+} \
+\
+h2 \
+{ \
+margin-bottom:5px \
+} \
+\
+/* Speaker Photo */ \
+.speakerphoto \
+{ \
+width:150px; \
+padding:10px; \
+float:left; \
+} \
+\
+.speakertitle \
+{ \
+float:left; \
+clear:right; \
+margin:5px; \
+} \
+\
+.speakerdescription \
+{ \
+clear:both; \
+padding:20px; \
+} \
+\
+/* Content */ \
+.pages \
+{ \
+padding:15px; \
+} \
+\
+span.red \
+{ \
+color:Red; \
+} \
+\
+#main \
+{ \
+width:100%; \
+padding:10px; \
+} \
+\
+#about \
+{ \
+font-size:40px; \
+} \
+\
+/*Phones thats smaller than 480px*/ \
+@media only screen and (max-device-width: 480px) { \
+.speakerphoto \
+{ \
+width:140px; \
+} \
+.speakertitle \
+{ \
+width:150px; \
+} \
+\
+.pageimage \
+{ \
+width:300px; \
+} \
+} \
+\
+/*Phones thats smaller than 480px*/ \
+@media only screen and (max-device-width: 320px) { \
+.speakerphoto \
+{ \
+width:120px; \
+} \
+.speakertitle \
+{ \
+width:130px; \
+} \
+\
+.pageimage \
+{ \
+width:280px; \
+} \
+} \
+</style> \
+</head> \
+\
+<body> \
+<div class=\"pages\"> \
+%@ \
+</div> \
+</body> \
+</html>"
 
 @implementation InformationController
 
@@ -95,23 +201,23 @@
 }
 
 #pragma mark -
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAbout:[TEDxAlcatrazGlobal eventIdentifier]]];
+    
+	[super setColouredBackgroundForWebView:[UIColor blackColor]];	
+	[super loadLocalHTMLString:eventAbout];
+}
 
--(void)viewDidLoad {
-	[super viewDidLoad];
-	
-	[super setColouredBackgroundForWebView:[UIColor blackColor]];
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 }
 
 #pragma mark -
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
-	self.btnContact = nil;
-}
-
 - (void)dealloc {
-	[btnContact release];
-	
+	[eventAbout release];
     [super dealloc];
 }
 

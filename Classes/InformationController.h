@@ -37,6 +37,7 @@
 
 @interface InformationController : WebViewControllerBaseClass <MFMailComposeViewControllerDelegate> {
 	UIBarButtonItem *btnContact;
+    NSString *eventAbout;
 }
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *btnContact;
