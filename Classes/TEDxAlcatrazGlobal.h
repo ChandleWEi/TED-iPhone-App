@@ -118,7 +118,6 @@
 
 #pragma Constant Values
 
-static NSString* const CONFERENCE_TAG = @"#TED2011";
 static NSString* const CURRENT_EVENT_ROWID = @"CurrentEventRowId";
 
 static NSString* const EVENT_SPEAKER_DATA = @"SpeakerData";

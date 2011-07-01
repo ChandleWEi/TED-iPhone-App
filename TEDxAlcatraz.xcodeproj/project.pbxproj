@@ -600,7 +600,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Ma (46P2VYZ72P)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -614,7 +614,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "TEDGlobal 2011";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "D5E8675A-0E5B-49F2-9BCD-98C97D111E16";
 				SDKROOT = iphoneos4.3;
 			};
 			name = Debug;
@@ -623,7 +623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Ma (46P2VYZ72P)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TEDxAlcatraz_Prefix.pch;
@@ -635,7 +635,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "TEDGlobal 2011";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "D5E8675A-0E5B-49F2-9BCD-98C97D111E16";
 				SDKROOT = iphoneos4.3;
 				VALIDATE_PRODUCT = YES;
 			};
