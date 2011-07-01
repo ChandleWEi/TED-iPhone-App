@@ -45,10 +45,23 @@
         
     NSString *ret = @"";
 	if (responseDictionary != nil) {
+    
+        [[NSUserDefaults standardUserDefaults] setObject:[[responseDictionary objectAtIndex:0] objectForKey:@"About"]forKey:[NSString stringWithFormat:@"%@%d", EVENT_ABOUT_DATA, eventId]];
+        
 		ret = [[responseDictionary objectAtIndex:0] objectForKey:@"About"];
 	}
     
 	return ret;
+}
+
++ (NSString *)getEventAboutFromCache : (NSInteger)eventId
+{
+	NSString *returnString = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%d", EVENT_ABOUT_DATA, eventId]];
+	//NSString *returnString = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	
+	DLog(@"EventAbout:%@", returnString);
+	
+	return returnString;
 }
 
 + (NSArray *)getEventSessionsFromWebService:(NSInteger)eventId

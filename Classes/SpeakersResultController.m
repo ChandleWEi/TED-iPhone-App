@@ -118,14 +118,17 @@
 
 	[speakers release];
 
-	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal eventIdentifier]];
+	NSInteger eventVersion = 0;
+    if ([TEDxAlcatrazGlobal checkIsOnInternet]) {
+        eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal eventIdentifier]];
+    }    
     
 	if([TEDxAlcatrazGlobal eventVersion:[TEDxAlcatrazGlobal eventIdentifier]] == eventVersion || eventVersion == 0)
 	{
 		speakers = [[EventLogic getSpeakersByEventFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 		sessions = [[EventLogic getEventSessionsFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}
-	else {
+	else if ([TEDxAlcatrazGlobal checkIsOnInternet]) {
         speakers = [[EventLogic getSpeakersByEventWebService:[TEDxAlcatrazGlobal eventIdentifier] Version:eventVersion] retain];
 		sessions = [[EventLogic getEventSessionsFromWebService:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}

@@ -50,8 +50,9 @@
 #else
 #define DAssert(condition, desc) 
 #endif
-
 @interface TEDxAlcatrazGlobal : NSObject
+
++(bool) checkIsOnInternet;
 
 +(void)createTempPath;
 
@@ -119,6 +120,9 @@
 #pragma Constant Values
 
 static NSString* const CURRENT_EVENT_ROWID = @"CurrentEventRowId";
+
+static NSString* const EVENT_ABOUT_DATA = @"EventAbout";
+static NSString* const EVENT_ABOUT_VERSION = @"EventAboutVersion";
 
 static NSString* const EVENT_SPEAKER_DATA = @"SpeakerData";
 static NSString* const EVENT_SESSION_DATA = @"SessionData";

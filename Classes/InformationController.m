@@ -217,7 +217,23 @@ width:280px; \
 	[super viewWillAppear:animated];
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-    eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAbout:[TEDxAlcatrazGlobal eventIdentifier]]];
+    if([TEDxAlcatrazGlobal checkIsOnInternet])
+    {
+        eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAbout:[TEDxAlcatrazGlobal eventIdentifier]]];
+	}
+	else {
+        if([EventLogic getEventAboutFromCache:[TEDxAlcatrazGlobal eventIdentifier]])
+        {
+            eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAboutFromCache:[TEDxAlcatrazGlobal eventIdentifier]]];            
+        }
+        else
+        {           
+            eventAbout = [NSString stringWithFormat:kAboutHtml, @"Internet is required for the first time when you load up the app."];     
+            
+        }
+
+	}
+    
     
 	[super setColouredBackgroundForWebView:[UIColor blackColor]];	
 	[super loadLocalHTMLString:eventAbout];
@@ -227,6 +243,11 @@ width:280px; \
     self.navigationItem.leftBarButtonItem = btnArchive;
     self.navigationItem.rightBarButtonItem = btnContact;
     [pool drain];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(IBAction)btnArchived_Clicked

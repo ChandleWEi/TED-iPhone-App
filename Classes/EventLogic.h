@@ -16,6 +16,8 @@
 
 + (NSString *)getEventAbout : (NSInteger)eventId;
 
++ (NSString *)getEventAboutFromCache : (NSInteger)eventId;
+
 + (NSArray *)getEventSessionsFromWebService:(NSInteger)eventId;
 
 + (NSArray *)getEventSessionsFromCache:(NSInteger)eventId;

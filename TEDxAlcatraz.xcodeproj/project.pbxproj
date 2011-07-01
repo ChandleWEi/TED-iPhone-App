@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1F11E19513BE4ACF0017BFD3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E19413BE4ACF0017BFD3 /* Reachability.m */; };
+		1F11E19713BE4CFA0017BFD3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F11E19613BE4CFA0017BFD3 /* SystemConfiguration.framework */; };
 		1F1F3E9713B8DC210068349F /* ArchivedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F3E9513B8DC210068349F /* ArchivedViewController.m */; };
 		1F1F3E9813B8DC210068349F /* ArchivedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F3E9613B8DC210068349F /* ArchivedViewController.xib */; };
 		1F24DD90137C09750017BEEE /* FusionTableReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F24DD8F137C09750017BEEE /* FusionTableReader.m */; };
@@ -85,6 +87,9 @@
 		1D3623250D0F684500981E51 /* TEDxAlcatrazAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEDxAlcatrazAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* TEDGlobal 2011.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TEDGlobal 2011.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F11E19313BE4ACF0017BFD3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1F11E19413BE4ACF0017BFD3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		1F11E19613BE4CFA0017BFD3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1F1F3E9413B8DC210068349F /* ArchivedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivedViewController.h; sourceTree = "<group>"; };
 		1F1F3E9513B8DC210068349F /* ArchivedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivedViewController.m; sourceTree = "<group>"; };
 		1F1F3E9613B8DC210068349F /* ArchivedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchivedViewController.xib; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F11E19713BE4CFA0017BFD3 /* SystemConfiguration.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -239,6 +245,8 @@
 		1F34F57413083B1900032D3F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1F11E19313BE4ACF0017BFD3 /* Reachability.h */,
+				1F11E19413BE4ACF0017BFD3 /* Reachability.m */,
 				1F34F5CA1308405F00032D3F /* EventLogic.h */,
 				1F34F5CB1308405F00032D3F /* EventLogic.m */,
 				1F3C850D1316E70A00472A43 /* Base64.h */,
@@ -436,6 +444,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F11E19613BE4CFA0017BFD3 /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
@@ -589,6 +598,7 @@
 				1FDC4246131716580049CE8B /* SubEventSpeakersResultController.m in Sources */,
 				1F24DD90137C09750017BEEE /* FusionTableReader.m in Sources */,
 				1F1F3E9713B8DC210068349F /* ArchivedViewController.m in Sources */,
+				1F11E19513BE4ACF0017BFD3 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +616,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TEDxAlcatraz_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = "TEDxAlcatraz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -627,7 +637,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TEDxAlcatraz_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = "TEDxAlcatraz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (

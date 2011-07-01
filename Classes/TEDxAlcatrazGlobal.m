@@ -31,11 +31,22 @@
  */
 
 #import "TEDxAlcatrazGlobal.h"
+#import "Reachability.h"
 
 @implementation TEDxAlcatrazGlobal
 
 #define kImageFileNameFormat @"%d.dat"
 #define kImageCacheDirectoryName @"imagecache"
+
++(bool) checkIsOnInternet
+{
+    // called after network status changes
+    Reachability* reachability = [Reachability reachabilityWithHostName:@"www.google.com"];
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+    
+    if(remoteHostStatus == NotReachable) {return false;}
+    else return true;
+}
 
 +(void)createTempPath {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);

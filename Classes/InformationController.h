@@ -32,7 +32,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
-
+#import "Reachability.h"
 #import "WebViewControllerBaseClass.h"
 
 @interface InformationController : WebViewControllerBaseClass <MFMailComposeViewControllerDelegate> {
@@ -40,6 +40,9 @@
     UIBarButtonItem *btnArchive;
 	UIBarButtonItem *btnCurrent;
     NSString *eventAbout;
+    
+    Reachability* internetReachable;
+    Reachability* hostReachable;
 }
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *btnContact;
