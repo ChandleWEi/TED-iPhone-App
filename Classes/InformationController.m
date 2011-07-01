@@ -35,7 +35,7 @@
 #import "TEDxAlcatrazGlobal.h"
 #import "EventLogic.h"
 
-#define kTEDxMailToSubject @"iPhone TED2011 Question"
+#define kTEDxMailToSubject @"TEDConference App"
 #define kTEDxMailToBody @"Dear Programmer"
 #define kTEDxMailToURL @"mailto:%@?subject=iPhone TED Question&body=Dear TED Organiser"
 
@@ -160,6 +160,11 @@ width:280px; \
 		
 		[mcvc setToRecipients:[NSArray arrayWithObject:to]];
 		[mcvc setSubject:subject];
+        
+        [mcvc setSubject:[NSString stringWithFormat:@"%@ for iOS version %@",
+                         [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleNameKey],
+                         [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]]];
+        
 		[mcvc setMessageBody:body isHTML:NO];
 		[mcvc setMailComposeDelegate:self];
 

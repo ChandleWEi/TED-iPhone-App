@@ -150,9 +150,9 @@
 }
 
 +(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"WebSite"] isKindOfClass:[NSString class]], @"Description is not a string");
+	DAssert([[JSONDictionary objectForKey:@"Website"] isKindOfClass:[NSString class]], @"Description is not a string");
 	
-	return [JSONDictionary objectForKey:@"WebSite"];	
+	return [JSONDictionary objectForKey:@"Website"];	
 }
 
 
