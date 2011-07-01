@@ -50,14 +50,20 @@
 	}
 }
 
-+(NSString*)tempPathForSpeakerImage:(NSDictionary*)speaker {
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *tempPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:kImageCacheDirectoryName]];
++(NSString*)descriptionFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"Description"] isKindOfClass:[NSString class]], @"Description is not a string");
 	
-	tempPath = [tempPath stringByAppendingPathComponent:[NSString stringWithFormat:kImageFileNameFormat, [TEDxAlcatrazGlobal speakerIdFromJSONData:speaker]]];
-	
-	return tempPath;
+	return [JSONDictionary objectForKey:@"Description"];	
+}
+
++ (NSDate*) getDateFromJSON:(NSString *)dateString
+{
+
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    NSDate *ret = [df dateFromString: dateString];
+
+    return ret;
 }
 
 +(UIImage*)imageForSpeaker:(NSDictionary*)speaker {
@@ -79,26 +85,9 @@
 	
 	//get the speaker name
 	return [NSString stringWithFormat:
-					  @"%@ %@",
-					  [JSONDictionary objectForKey:@"FirstName"],
-					  [JSONDictionary objectForKey:@"LastName"]];	
-}
-
-+ (NSDate*) getDateFromJSON:(NSString *)dateString
-{
-    // Expect date in this format "/Date(1268123281843)/"
-    int startPos = [dateString rangeOfString:@"("].location+1;
-    int endPos = [dateString rangeOfString:@")"].location;
-    NSRange range = NSMakeRange(startPos,endPos-startPos);
-    unsigned long long milliseconds = [[dateString substringWithRange:range] longLongValue];
-    NSTimeInterval interval = milliseconds/1000;
-    return [NSDate dateWithTimeIntervalSince1970:interval];
-}
-
-+(NSString*)titleFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"Title"] isKindOfClass:[NSString class]], @"Title is not a string");
-	
-	return [JSONDictionary objectForKey:@"Title"];	
+            @"%@ %@",
+            [JSONDictionary objectForKey:@"FirstName"],
+            [JSONDictionary objectForKey:@"LastName"]];	
 }
 
 +(NSString*)photoURLFromJSONData:(NSDictionary*)JSONDictionary {
@@ -107,36 +96,12 @@
 	return [JSONDictionary objectForKey:@"PhotoUrl"];	
 }
 
-+(NSString*)descriptionFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"Description"] isKindOfClass:[NSString class]], @"Description is not a string");
-	
-	return [JSONDictionary objectForKey:@"Description"];	
-}
-
-+(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"WebSite"] isKindOfClass:[NSString class]], @"Description is not a string");
-	
-	return [JSONDictionary objectForKey:@"WebSite"];	
-}
-
-+(NSString*)twitterFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"Twitter"] isKindOfClass:[NSString class]], @"Description is not a string");
-	
-	return [JSONDictionary objectForKey:@"Twitter"];	
-}
-
-+(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[JSONDictionary objectForKey:@"SpeakerId"] isKindOfClass:[NSNumber class]], @"SpeakerId is not a number");
-	
-	return [[JSONDictionary objectForKey:@"SpeakerId"] intValue];
-}
-
 +(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary {    
 	return [[JSONDictionary objectForKey:@"Session"] intValue];
 }
 
 +(NSInteger)sessionIdFromJSONData:(NSDictionary*)JSONDictionary {
-	return [[JSONDictionary objectForKey:@"SessionId"] intValue];
+    return [[JSONDictionary objectForKey:@"SessionId"] intValue];
 }
 
 +(NSString *)sessionNameFromJSONData:(NSDictionary*)JSONDictionary {
@@ -145,41 +110,53 @@
 	return [JSONDictionary objectForKey:@"SessionName"];
 }
 
-+(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary {
-	DAssert([[self getDateFromJSON:[JSONDictionary objectForKey:@"SessionTime"]] isKindOfClass:[NSDate class]], @"SessionTime is not a date");
-	
-	return [self getDateFromJSON:[JSONDictionary objectForKey:@"SessionTime"]];
++(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary {	
+    DAssert([[JSONDictionary objectForKey:@"SessionTime"] isKindOfClass:[NSString class]], @"SessionTime is not a string");
+
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    NSDate *ret = [df dateFromString: [JSONDictionary objectForKey:@"SessionTime"]];
+    
+	return ret;
 }
 
-#pragma mark -
 
-+(NSDictionary*)venueDictionary {
-	NSDictionary *TEDxVenue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TEDVenue"];
++(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"SpeakerId"] isKindOfClass:[NSNumber class]], @"SpeakerId is not a number");
 	
-	DAssert(TEDxVenue != nil, @"the venue dictionary is missing from the Info.plist");
-	
-	return TEDxVenue;
+	return [[JSONDictionary objectForKey:@"SpeakerId"] intValue];
 }
 
-+(NSUInteger)eventIdentifier {
-	NSDictionary* TEDxVenueDetails = [TEDxAlcatrazGlobal venueDictionary];
-	NSNumber *eventIdNumber = [TEDxVenueDetails objectForKey:@"EventId"];
++(NSString*)tempPathForSpeakerImage:(NSDictionary*)speaker {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *tempPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:kImageCacheDirectoryName]];
 	
-	DAssert(eventIdNumber != nil, @"The event id is nil");
+	tempPath = [tempPath stringByAppendingPathComponent:[NSString stringWithFormat:kImageFileNameFormat, [TEDxAlcatrazGlobal speakerIdFromJSONData:speaker]]];
 	
-	return [eventIdNumber integerValue];
+	return tempPath;
 }
 
-+(NSUInteger)subEventIdentifier{
-	NSDictionary* TEDxVenueDetails = [TEDxAlcatrazGlobal venueDictionary];
-	NSNumber *eventIdNumber = [TEDxVenueDetails objectForKey:@"SubEventId"];
++(NSString*)titleFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"Title"] isKindOfClass:[NSString class]], @"Title is not a string");
 	
-	DAssert(eventIdNumber != nil, @"The sub event id is nil");
-	
-	return [eventIdNumber integerValue];
-	
+	return [JSONDictionary objectForKey:@"Title"];	
 }
 
++(NSString*)twitterFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"Twitter"] isKindOfClass:[NSString class]], @"Description is not a string");
+	
+	return [JSONDictionary objectForKey:@"Twitter"];	
+}
+
++(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary {
+	DAssert([[JSONDictionary objectForKey:@"WebSite"] isKindOfClass:[NSString class]], @"Description is not a string");
+	
+	return [JSONDictionary objectForKey:@"WebSite"];	
+}
+
+
+#pragma mark - Local InfoList items
 +(NSString*)emailAddress {
 	NSDictionary* TEDxVenueDetails = [TEDxAlcatrazGlobal venueDictionary];
 	NSString *emailAddress = [TEDxVenueDetails objectForKey:@"EmailAddress"];
@@ -189,6 +166,69 @@
 	return emailAddress;
 }
 
++(NSUInteger)eventIdentifier {
+    
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [[row valueForKey:@"EventId"] intValue];
+}
+
++(NSInteger)eventVersion : (NSInteger)eventId{
+	return [[NSUserDefaults standardUserDefaults] integerForKey: [NSString stringWithFormat:@"%@%d", EVENT_VERSION, eventId]];
+}
+
++(NSString *)eventName{
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [row valueForKey:@"TEDConference"];
+}
+
++(NSString *)eventLocationAdddress{
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [row valueForKey:@"Address"];
+}
+
++(NSString *)eventLocationName{
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [row valueForKey:@"Name"];
+}
+
++(NSNumber *)eventLocationLatitude{
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [row valueForKey:@"Latitude"];
+}
+
++(NSNumber *)eventLocationLongitude{
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [row valueForKey:@"Longitude"];
+}
 
 +(NSDictionary*)fusionTableDictionary{
 	NSDictionary *FusionTableCalls = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FusionTableCalls"];
@@ -199,8 +239,27 @@
 }
 
 
-+(NSInteger)eventVersion {
-	return [[NSUserDefaults standardUserDefaults] integerForKey:EVENT_VERSION];
++(void)setEventIds:(int)RowId
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:RowId forKey:CURRENT_EVENT_ROWID];
+}
+
++(NSUInteger)subEventIdentifier{
+
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+        
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+        
+    return [[row valueForKey:@"SubEventId"] intValue];
+}
+
++(NSDictionary*)venueDictionary {
+	NSDictionary *TEDxVenue = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TEDVenue"];
+	
+	DAssert(TEDxVenue != nil, @"the venue dictionary is missing from the Info.plist");
+	
+	return TEDxVenue;
 }
 
 @end

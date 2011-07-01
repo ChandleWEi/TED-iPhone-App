@@ -88,7 +88,7 @@
 
 @implementation MapController
 
-@synthesize mapView, btnDirection;
+@synthesize mapView;
 
 #pragma mark -
 #pragma mark Venue Details Dictionary from Main Bundle
@@ -99,10 +99,9 @@
 
 -(IBAction)btnDirection_Clicked
 {
-	NSDictionary *TEDxVenueDetails = [TEDxAlcatrazGlobal venueDictionary];
-	NSString *Address = [TEDxVenueDetails objectForKey:@"Address"]; //[NSString stringWithFormat:kVenueAddress];
-	NSNumber *venueLatitude = [TEDxVenueDetails objectForKey:@"Latitude"];
-	NSNumber *venueLongitude = [TEDxVenueDetails objectForKey:@"Longitude"];
+	NSString *Address = [TEDxAlcatrazGlobal eventLocationAdddress]; //[NSString stringWithFormat:kVenueAddress];
+	NSNumber *venueLatitude = [TEDxAlcatrazGlobal eventLocationLatitude];
+	NSNumber *venueLongitude = [TEDxAlcatrazGlobal eventLocationLongitude];
 	NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@&ll=%f,%f",
 					 [Address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
 					 [venueLatitude doubleValue],
@@ -115,22 +114,22 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = btnDirection;
+    [super viewDidLoad];	
+}
 
-	
-	NSDictionary *TEDxVenueDetails = [TEDxAlcatrazGlobal venueDictionary];
-	
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
 	CLLocationCoordinate2D location1;
 	{
-		NSNumber *venueLatitude = [TEDxVenueDetails objectForKey:@"Latitude"];
-		NSNumber *venueLongitude = [TEDxVenueDetails objectForKey:@"Longitude"];
+		NSNumber *venueLatitude = [TEDxAlcatrazGlobal eventLocationLatitude];
+		NSNumber *venueLongitude = [TEDxAlcatrazGlobal eventLocationLongitude];
 		location1.latitude = [venueLatitude doubleValue];//kVenueLatitude;
 		location1.longitude = [venueLongitude doubleValue];//kVenueLongitude;
 	}
 	
 	mapView.centerCoordinate = location1;
-
+    
 	MKCoordinateRegion region;
 	MKCoordinateSpan span;
 	span.latitudeDelta=0.01;
@@ -141,16 +140,17 @@
 	
 	[mapView setRegion:region animated:FALSE];
 	[mapView regionThatFits:region];
-
+    
 	AddressAnnotation *location1Annotation = [[AddressAnnotation alloc] initWithCoordinate:location1];
-	location1Annotation.mTitle = [TEDxVenueDetails objectForKey:@"Name"]; //kVenueName;
-	location1Annotation.mSubTitle = [TEDxVenueDetails objectForKey:@"Address"]; //kVenueAddress;
-
+	location1Annotation.mTitle = [TEDxAlcatrazGlobal eventLocationName]; //kVenueName;
+	location1Annotation.mSubTitle = [TEDxAlcatrazGlobal eventLocationAdddress]; //kVenueAddress;
+    
 	//Adds all 3 points
 	[mapView addAnnotation:location1Annotation];
 	mapView.zoomEnabled = FALSE;
 	
-	[location1Annotation release];
+	[location1Annotation release];    
+    
 }
 
 #pragma mark -

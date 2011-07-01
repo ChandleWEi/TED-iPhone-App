@@ -120,7 +120,7 @@
 
 	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal eventIdentifier]];
     
-	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
+	if([TEDxAlcatrazGlobal eventVersion:[TEDxAlcatrazGlobal eventIdentifier]] == eventVersion || eventVersion == 0)
 	{
 		speakers = [[EventLogic getSpeakersByEventFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 		sessions = [[EventLogic getEventSessionsFromCache:[TEDxAlcatrazGlobal eventIdentifier]] retain];
@@ -129,7 +129,7 @@
         speakers = [[EventLogic getSpeakersByEventWebService:[TEDxAlcatrazGlobal eventIdentifier] Version:eventVersion] retain];
 		sessions = [[EventLogic getEventSessionsFromWebService:[TEDxAlcatrazGlobal eventIdentifier]] retain];
 	}
-	
+	    
 	[[self tableView] performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 	
 	[pool drain];
@@ -278,7 +278,10 @@
 	self.navigationItem.title = @"Speakers";
 	
 	self.tableView.rowHeight = kSpeakersTableRowHeight;
-	
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	[self performSelectorInBackground:@selector(getSpeakersInBackground) withObject:nil];
 }
 

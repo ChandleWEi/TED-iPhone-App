@@ -2,6 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Archive</key>
+	<array>
+		<dict>
+			<key>Address</key>
+			<string>150 Morrison Street Edinburgh, Midlothian EH3 8EE, United Kingdom </string>
+			<key>EmailAddress</key>
+			<string>peter@catch.com</string>
+			<key>EventId</key>
+			<integer>21</integer>
+			<key>Latitude</key>
+			<real>55.946501</real>
+			<key>Longitude</key>
+			<real>-3.209445</real>
+			<key>Name</key>
+			<string>Edinburgh International Conference Centre</string>
+			<key>SubEventId</key>
+			<string>22</string>
+			<key>TEDConference</key>
+			<string>TEDGlobal 2011</string>
+		</dict>
+		<dict>
+			<key>Address</key>
+			<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
+			<key>EmailAddress</key>
+			<string>peter@catch.com</string>
+			<key>EventId</key>
+			<integer>19</integer>
+			<key>Latitude</key>
+			<real>33.765003</real>
+			<key>Longitude</key>
+			<real>-118.189523</real>
+			<key>Name</key>
+			<string>Long Beach Convention and Entertainment Center</string>
+			<key>SubEventId</key>
+			<string>18</string>
+			<key>TEDConference</key>
+			<string>TED2011</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -81,6 +120,8 @@
 		<string>Long Beach Convention and Entertainment Center</string>
 		<key>SubEventId</key>
 		<string>18</string>
+		<key>TEDConference</key>
+		<string>TEDGlobal 2011</string>
 	</dict>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationPortrait</string>
@@ -94,27 +135,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>Archive</key>
-	<array>
-		<dict>
-			<key>TEDVenue</key>
-			<string>TED2011</string>
-			<key>Address</key>
-			<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
-			<key>EmailAddress</key>
-			<string>peter@catch.com</string>
-			<key>EventId</key>
-			<integer>19</integer>
-			<key>Latitude</key>
-			<real>33.765003</real>
-			<key>Longitude</key>
-			<string>-118.189523</string>
-			<key>Name</key>
-			<string>Long Beach Convention and Entertainment Center</string>
-			<key>SubEventId</key>
-			<string>18</string>
-		</dict>
 	</array>
 </dict>
 </plist>

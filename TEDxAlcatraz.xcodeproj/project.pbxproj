@@ -203,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				1F1F3E9213B8DBE30068349F /* Archived */,
-				1F34F57413083B1900032D3F /* Utility */,
+				1F34F57413083B1900032D3F /* Utilities */,
 				663B9B0212D209BA00C75B08 /* WebViewControllerBaseClass */,
 				1F64ED4E12935720003A8687 /* Map */,
 				1F34FBE1130DF2CD00032D3F /* SubEventSpeakers */,
@@ -236,7 +236,7 @@
 			name = Archived;
 			sourceTree = "<group>";
 		};
-		1F34F57413083B1900032D3F /* Utility */ = {
+		1F34F57413083B1900032D3F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				1F34F5CA1308405F00032D3F /* EventLogic.h */,
@@ -246,7 +246,7 @@
 				1F24DD8E137C09750017BEEE /* FusionTableReader.h */,
 				1F24DD8F137C09750017BEEE /* FusionTableReader.m */,
 			);
-			name = Utility;
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		1F34FBE1130DF2CD00032D3F /* SubEventSpeakers */ = {

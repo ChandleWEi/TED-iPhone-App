@@ -111,7 +111,7 @@
 	
 	NSInteger eventVersion = [EventLogic getEventVersion:[TEDxAlcatrazGlobal subEventIdentifier]];
 
-	if([TEDxAlcatrazGlobal eventVersion] == eventVersion || eventVersion == 0)
+	if([TEDxAlcatrazGlobal eventVersion:[TEDxAlcatrazGlobal subEventIdentifier]] == eventVersion || eventVersion == 0)
 	{
 		speakers = [[EventLogic getSpeakersByEventFromCache:[TEDxAlcatrazGlobal subEventIdentifier]] retain];
 		sessions = [[EventLogic getEventSessionsFromCache:[TEDxAlcatrazGlobal subEventIdentifier]] retain];
@@ -269,7 +269,10 @@
 	self.navigationItem.title = @"TEDU Speakers";
 	
 	self.tableView.rowHeight = kSpeakersTableRowHeight;
-	
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	[self performSelectorInBackground:@selector(getSpeakersInBackground) withObject:nil];
 }
 

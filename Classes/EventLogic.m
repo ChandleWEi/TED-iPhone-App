@@ -89,24 +89,32 @@
 	
     NSData *data = [FusionTableReader getSearchResultsByUrl:fusionquery type:fusionquerycallback];     
     
-    NSArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSMutableArray *responseDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseDictionary] forKey:[NSString stringWithFormat:@"%@%d", EVENT_SPEAKER_DATA, eventId]];
-	[[NSUserDefaults standardUserDefaults] setInteger:version forKey:EVENT_VERSION];
+	[[NSUserDefaults standardUserDefaults] setInteger:version forKey:[NSString stringWithFormat:@"%@%d", EVENT_VERSION, eventId]];
     
     DLog(@"Speakers:%@", responseDictionary);
     
-	return responseDictionary;
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"LastName" ascending:YES];
+    [responseDictionary sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    [descriptor release];	
+    
+    return [NSArray arrayWithArray:responseDictionary];
 }
 
 + (NSArray *)getSpeakersByEventFromCache:(NSInteger)eventId;
 {
 	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%d", EVENT_SPEAKER_DATA, eventId]];
-	NSArray *returnData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	NSMutableArray *returnData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
 	DLog(@"Speakers:%@", returnData);
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"LastName" ascending:YES];
+    [returnData sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    [descriptor release];	
 	
-	return returnData;
+    return [NSArray arrayWithArray:returnData];
 }
 
 +(int)dateDiff:(NSDate*)firstday lastday:(NSDate*)lastday {
@@ -131,8 +139,9 @@
 	
 	for(int i = 0; i<[sessions count]; i++)
 	{
+        NSLog(@"doh:%@", [sessions objectAtIndex:i]);
 		if ([currentTime compare:[TEDxAlcatrazGlobal sessionTimeFromJSONData:[sessions objectAtIndex:i]]] > 0) {
-			ret = [TEDxAlcatrazGlobal sessionFromJSONData:[sessions objectAtIndex:i]];
+			ret = [TEDxAlcatrazGlobal sessionIdFromJSONData:[sessions objectAtIndex:i]];
 		}
 	}
 	
@@ -176,6 +185,11 @@
 			i--;
 		}
 	}
-	return [NSArray arrayWithArray:returnData];
+    
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"SpeakerOrder" ascending:YES];
+    [returnData sortUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    [descriptor release];	
+    
+    return [NSArray arrayWithArray:returnData];
 }
 @end

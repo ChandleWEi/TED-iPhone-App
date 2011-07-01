@@ -55,26 +55,16 @@
 
 +(void)createTempPath;
 
-+(NSString*)tempPathForSpeakerImage:(NSDictionary*)speaker;
++(NSString*)descriptionFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSDate*) getDateFromJSON:(NSString *)dateString;
 
 +(UIImage*)imageForSpeaker:(NSDictionary*)speaker;
 
 +(NSString*)nameStringFromJSONData:(NSDictionary*)JSONDictonary;
 
-+(NSDate*) getDateFromJSON:(NSString *)dateString;
-
-+(NSString*)titleFromJSONData:(NSDictionary*)JSONDictionary;
-
 +(NSString*)photoURLFromJSONData:(NSDictionary*)JSONDictionary;
-
-+(NSString*)descriptionFromJSONData:(NSDictionary*)JSONDictionary;
-
-+(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary;
-
-+(NSString*)twitterFromJSONData:(NSDictionary*)JSONDictionary;
 	
-+(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary;
-
 +(NSInteger)sessionFromJSONData:(NSDictionary*)JSONDictionary;
 
 +(NSInteger)sessionIdFromJSONData:(NSDictionary*)JSONDictionary;
@@ -83,34 +73,61 @@
 
 +(NSDate *)sessionTimeFromJSONData:(NSDictionary*)JSONDictionary;
 
-// returns the TEDxVenue dictionary from the Info.plist, which contains the venue id, address, etc
-+(NSDictionary*)venueDictionary;
++(NSInteger)speakerIdFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSString*)tempPathForSpeakerImage:(NSDictionary*)speaker;
+
++(NSString*)titleFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSString*)twitterFromJSONData:(NSDictionary*)JSONDictionary;
+
++(NSString*)webSiteFromJSONData:(NSDictionary*)JSONDictionary;
+
+#pragma local values from infolist
+// returns the event id from the TEDxVenue dictionary in the Info.plist
++(NSUInteger)eventIdentifier;
+
+// returns the email address from the TEDxVenue dictionary in the Info.plist
++(NSString*)emailAddress;
+
++(NSString *)eventName;
+
++(NSString *)eventLocationAdddress;
+
++(NSString *)eventLocationName;
+
++(NSNumber *)eventLocationLatitude;
+
++(NSNumber *)eventLocationLongitude;
+
++(NSInteger)eventVersion : (NSInteger)eventId;
 
 // returns the FusionTableCalls dictionary from the Info.plist, which contains all the webservice calls to fusion table
 +(NSDictionary*)fusionTableDictionary;
-
-// returns the event id from the TEDxVenue dictionary in the Info.plist
-+(NSUInteger)eventIdentifier;
 
 // returns the subEvent id from the TEDxVenue dictionary in the Info.plist
 // This is used for those event that contains multiple subevents, such as TEDxAsheville, TEDUniversity
 +(NSUInteger)subEventIdentifier;
 
-// returns the email address from the TEDxVenue dictionary in the Info.plist
-+(NSString*)emailAddress;
++(void)setEventIds:(int)RowId;
 
-+(NSInteger)eventVersion;
+// returns the TEDxVenue dictionary from the Info.plist, which contains the venue id, address, etc
++(NSDictionary*)venueDictionary;
+
+#pragma Constant Values
 
 static NSString* const CONFERENCE_TAG = @"#TED2011";
-static NSString* const WEBSERVICE_ADDRESS = @"http://www.tedxapps.com/wsdl/TEDxService.svc/";
-static NSString* const EVENT_VERSION = @"Version";
+static NSString* const CURRENT_EVENT_ROWID = @"CurrentEventRowId";
+
 static NSString* const EVENT_SPEAKER_DATA = @"SpeakerData";
 static NSString* const EVENT_SESSION_DATA = @"SessionData";
+static NSString* const EVENT_VERSION = @"Version";
 
 static NSString* const SUB_EVENT_VERSION = @"SubEventVersion";
 static NSString* const SUB_EVENT_SPEAKER_DATA = @"SubEventSpeakerData";
 static NSString* const SUB_EVENT_SESSION_DATA = @"SubEventSessionData";
 
+static NSString* const WEBSERVICE_ADDRESS = @"http://www.tedxapps.com/wsdl/TEDxService.svc/";
 static NSString* const WEBSERVICE_GETEVENTVERSION = @"GetEventVersion";
 static NSString* const WEBSERVICE_GETEVENTSESSIONBYEVENTID = @"GetSessionsByEventId";
 

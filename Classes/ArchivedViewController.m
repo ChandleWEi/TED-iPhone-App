@@ -3,10 +3,11 @@
 //  TEDxAlcatraz
 //
 //  Created by Peter Ma on 6/27/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Catch.com. All rights reserved.
 //
 
 #import "ArchivedViewController.h"
+#import "TEDxAlcatrazGlobal.h"
 
 @implementation ArchivedViewController
 
@@ -33,6 +34,10 @@
 {
     [super viewDidLoad];
 
+    self.navigationItem.title = @"Past TED";
+    
+    archivedArray = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"] retain];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -77,16 +82,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [archivedArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,6 +101,9 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:indexPath.row]];
+
+    cell.textLabel.text = [row valueForKey:@"TEDConference"];
     // Configure the cell...
     
     return cell;
@@ -146,14 +152,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    [TEDxAlcatrazGlobal setEventIds:indexPath.row];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -30,6 +30,8 @@
 //
 
 #import "InformationController.h"
+#import "ArchivedViewController.h"
+#import "MapController.h"
 #import "TEDxAlcatrazGlobal.h"
 #import "EventLogic.h"
 
@@ -145,7 +147,7 @@ width:280px; \
 
 @implementation InformationController
 
-@synthesize btnContact;
+@synthesize btnContact, btnCurrent, btnArchive;
 
 #pragma mark -
 
@@ -204,20 +206,37 @@ width:280px; \
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAbout:[TEDxAlcatrazGlobal eventIdentifier]]];
-    
-	[super setColouredBackgroundForWebView:[UIColor blackColor]];	
-	[super loadLocalHTMLString:eventAbout];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    eventAbout = [NSString stringWithFormat:kAboutHtml, [EventLogic getEventAbout:[TEDxAlcatrazGlobal eventIdentifier]]];
+    
+	[super setColouredBackgroundForWebView:[UIColor blackColor]];	
+	[super loadLocalHTMLString:eventAbout];
+    
+    
+    self.navigationItem.title = [TEDxAlcatrazGlobal eventName];
+    self.navigationItem.leftBarButtonItem = btnArchive;
+    self.navigationItem.rightBarButtonItem = btnContact;
+    [pool drain];
+}
+
+-(IBAction)btnArchived_Clicked
+{
+    ArchivedViewController *archivedViewController = [[ArchivedViewController alloc] init];
+    [self.navigationController pushViewController:archivedViewController animated:YES];
+    [archivedViewController release];
 }
 
 #pragma mark -
 
 - (void)dealloc {
 	[eventAbout release];
+    [btnCurrent release];
+    [btnArchive release];
     [super dealloc];
 }
 

@@ -15,10 +15,18 @@ limitations under the License
 
 Includes Original TEDxApps Project
 Copyright (c) 2010 Peter Ma, Michael May
-Released under the MIT
+Released under the MIT License
 
 Includes JSON framework for Objective C
 Copyright (C) 2007-2009 Stig Brautaset. All rights reserved.
 Released under The BSD 2-Clause License
+
+Includes QueryString File Manager
+Copyright (c) 2010 - 2011, Quasidea Development, LLC
+Released under the MIT License
+
+Includes GTMDefines
+Copyright 2008 Google Inc.
+Released under Apache License
 
 Date: Sat June 24 12:03:48 2010 -0500
