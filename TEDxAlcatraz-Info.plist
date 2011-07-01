@@ -9,6 +9,8 @@
 			<string>150 Morrison Street Edinburgh, Midlothian EH3 8EE, United Kingdom </string>
 			<key>EmailAddress</key>
 			<string>peter@catch.com</string>
+			<key>EventHashTag</key>
+			<string>#TEDGlobal2011</string>
 			<key>EventId</key>
 			<integer>21</integer>
 			<key>Latitude</key>
@@ -27,6 +29,8 @@
 			<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
 			<key>EmailAddress</key>
 			<string>peter@catch.com</string>
+			<key>EventHashTag</key>
+			<string>#TEDGlobal2011</string>
 			<key>EventId</key>
 			<integer>19</integer>
 			<key>Latitude</key>

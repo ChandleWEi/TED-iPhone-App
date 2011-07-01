@@ -90,6 +90,8 @@
 // returns the email address from the TEDxVenue dictionary in the Info.plist
 +(NSString*)emailAddress;
 
++(NSString*)eventHashTag;
+
 +(NSString *)eventName;
 
 +(NSString *)eventLocationAdddress;

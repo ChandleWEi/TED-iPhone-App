@@ -232,14 +232,14 @@
 	[notes appendString: @"\n\nMy Notes:"];	
 	
 	[notes appendString: @"\n\n\n\n_________________________________\nTags: "];
-	[notes appendString: CONFERENCE_TAG];
+	[notes appendString: [TEDxAlcatrazGlobal eventHashTag]];
 
 	[self createCatchNoteWithText:notes];
 }
 
 - (void)ShowNotes{
 	NSMutableString *tags = [NSMutableString string];
-	[tags appendString: CONFERENCE_TAG];
+	[tags appendString: [TEDxAlcatrazGlobal eventHashTag]];
 
 	[CatchNotesLauncher showNotesMatchingText:tags fromViewController:self];
 }

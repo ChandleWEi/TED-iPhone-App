@@ -166,6 +166,16 @@
 	return emailAddress;
 }
 
++(NSString*)eventHashTag {
+    int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
+    
+    NSArray *archivedArray = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Archive"];
+    
+    NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
+    
+    return [row valueForKey:@"EventHashTag"];
+}
+
 +(NSUInteger)eventIdentifier {
     
     int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
@@ -176,10 +186,6 @@
     return [[row valueForKey:@"EventId"] intValue];
 }
 
-+(NSInteger)eventVersion : (NSInteger)eventId{
-	return [[NSUserDefaults standardUserDefaults] integerForKey: [NSString stringWithFormat:@"%@%d", EVENT_VERSION, eventId]];
-}
-
 +(NSString *)eventName{
     int rowid = [[NSUserDefaults standardUserDefaults] integerForKey:CURRENT_EVENT_ROWID];
     
@@ -188,6 +194,10 @@
     NSDictionary *row = [[NSDictionary alloc] initWithDictionary:[archivedArray objectAtIndex:rowid]];
     
     return [row valueForKey:@"TEDConference"];
+}
+
++(NSInteger)eventVersion : (NSInteger)eventId{
+	return [[NSUserDefaults standardUserDefaults] integerForKey: [NSString stringWithFormat:@"%@%d", EVENT_VERSION, eventId]];
 }
 
 +(NSString *)eventLocationAdddress{
