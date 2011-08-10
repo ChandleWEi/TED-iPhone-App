@@ -10,8 +10,11 @@
 #import "JSON.h"
 #import "ZoomedImageView.h"
 #import "TEDxAlcatrazGlobal.h"
-#define debug(format, ...) CFShow([NSString stringWithFormat:format, ## __VA_ARGS__]);
+#import <QuartzCore/QuartzCore.h>
 
+#define debug(format, ...) CFShow([NSString stringWithFormat:format, ## __VA_ARGS__]);
+#define flickrImageWidth 57
+#define space 18
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Private interface definitions
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -27,6 +30,7 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 
 @implementation FlickrViewController
 
+@synthesize scrollView;
 /**************************************************************************
  *
  * Private implementation section
@@ -35,6 +39,25 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 
 #pragma mark -
 #pragma mark Private Methods
+
+- (void) loadScrollView
+{
+    [scrollView setContentSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width, ceilf([photoSmallImageData count]/4 + 3)*60)];
+
+    for(int i = 0; i < [photoSmallImageData count]; i++)
+    {
+        dispatch_async(queue, ^{
+            NSData *imageData = [photoSmallImageData objectAtIndex:i];
+            UIImageView *imageView =  [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
+            [imageView setFrame:CGRectMake(((i+4)%4 + 1)*space + ((i+4)%4*flickrImageWidth), space * (floorf(i/4) + 1) + flickrImageWidth * floorf(i/4), flickrImageWidth, flickrImageWidth)];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [scrollView addSubview:imageView];
+            });
+        });
+    }
+}
+                                                                                   
 
 /*-------------------------------------------------------------
  *
@@ -78,42 +101,12 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 	}
     
     // Update the table with data
-    [theTableView reloadData];
+    [self loadScrollView];
     
     // Stop the activity indicator
     [activityIndicator stopAnimating];
     
 	[jsonString release];  
-}
-
-/*-------------------------------------------------------------
- *
- *------------------------------------------------------------*/
-
-/*-------------------------------------------------------------
- *
- *------------------------------------------------------------*/
-- (void)showZoomedImage:(NSIndexPath *)indexPath
-{
-    // Remove from view (and release)
-    if ([fullImageViewController superview])
-        [fullImageViewController removeFromSuperview];
-    
-    fullImageViewController = [[ZoomedImageView alloc] initWithURL:[photoURLsLargeImage objectAtIndex:indexPath.row]];
-    
-    [self.view addSubview:fullImageViewController];
-    
-    // Slide this view off screen
-    CGRect frame = fullImageViewController.frame;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:.45];
-    
-    // Slide the image to its new location (onscreen)
-    frame.origin.x = 0;
-    fullImageViewController.frame = frame;
-    
-    [UIView commitAnimations];
 }
 
 /**************************************************************************
@@ -130,15 +123,6 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
  *------------------------------------------------------------*/
 - (id)init
 {
-    // Create table view
-    theTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 240, 320, 220)];
-    [theTableView setDelegate:self];
-    [theTableView setDataSource:self];
-    [theTableView setRowHeight:80];
-    [self.view addSubview:theTableView];
-    [theTableView setBackgroundColor:[UIColor grayColor]];
-    [theTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        
     // Create activity indicator
     activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(220, 110, 15, 15)];
     activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -160,79 +144,6 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 }
 
 #pragma mark -
-#pragma mark Table Mgmt
-
-/*-------------------------------------------------------------
- *
- *------------------------------------------------------------*/
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
-{
-	return 1;
-}
-
-/*-------------------------------------------------------------
- *
- *------------------------------------------------------------*/
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-	return [photoTitles count];
-}
-
-/*-------------------------------------------------------------
- *
- *------------------------------------------------------------*/
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    // If we've created this VC before...
-    if (fullImageViewController != nil)
-    {
-        // Slide this view off screen
-        CGRect frame = fullImageViewController.frame;
-        
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:.45];
-        
-        // Off screen location
-        frame.origin.x = -320;
-        fullImageViewController.frame = frame;
-        
-        [UIView commitAnimations];
-        
-    }
-    
-    [self performSelector:@selector(showZoomedImage:) withObject:indexPath afterDelay:0.1];
-}
-
-/*-------------------------------------------------------------
- *
- *------------------------------------------------------------*/
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cachedCell"];
-    if (cell == nil)
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cachedCell"] autorelease];
-    //    cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"cachedCell"] autorelease];
-    
-#if __IPHONE_3_0
-    cell.textLabel.text = [photoTitles objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:13.0];
-#else
-    cell.text = [photoTitles objectAtIndex:indexPath.row];
-    cell.font = [UIFont systemFontOfSize:13.0];
-#endif
-	
-	NSData *imageData = [photoSmallImageData objectAtIndex:indexPath.row];
-    
-#if __IPHONE_3_0
-    cell.imageView.image = [UIImage imageWithData:imageData];
-#else
-	cell.image = [UIImage imageWithData:imageData];
-#endif
-	
-	return cell;
-}
-
-#pragma mark -
 #pragma mark View Mgmt
 
 /*-------------------------------------------------------------
@@ -243,6 +154,9 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 	[super viewDidLoad];
     self.navigationItem.title = @"Flickr";
     
+    queue = dispatch_queue_create("Flickr.Loader", nil);
+    dispatch_queue_t lowPriority = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
+    dispatch_set_target_queue(queue, lowPriority);
     
     [photoTitles removeAllObjects];
     [photoSmallImageData removeAllObjects];
@@ -250,7 +164,7 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
     [activityIndicator startAnimating];
     
     // Build the string to call the Flickr API
-	NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&user_id=62773263@N00&per_page=25&format=json&nojsoncallback=1", FlickrAPIKey, [TEDxAlcatrazGlobal eventName]];
+	NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&user_id=62773263@N00&per_page=32&format=json&nojsoncallback=1", FlickrAPIKey, [TEDxAlcatrazGlobal eventName]];
     
     // Create NSURL string from formatted string, by calling the Flickr API
 	NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
@@ -272,7 +186,7 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
  *------------------------------------------------------------*/
 - (void)dealloc 
 {
-    [theTableView release];
+    [scrollView release];
 	[photoTitles release];
 	[photoSmallImageData release];
     [photoURLsLargeImage release];
@@ -281,7 +195,8 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
     // Remove from view (and release)
     if ([fullImageViewController superview])
         [fullImageViewController removeFromSuperview];
-    
+    dispatch_release(queue);
+
 	[super dealloc];
 }
 

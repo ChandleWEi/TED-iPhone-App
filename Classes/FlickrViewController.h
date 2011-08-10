@@ -9,16 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "ZoomedImageView.h"
 
-@interface FlickrViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface FlickrViewController : UIViewController
 {
-    UITableView     *theTableView;
     NSMutableArray  *photoTitles;         // Titles of images
     NSMutableArray  *photoSmallImageData; // Image data (thumbnail)
     NSMutableArray  *photoURLsLargeImage; // URL to larger image
     
     ZoomedImageView  *fullImageViewController;
     UIActivityIndicatorView *activityIndicator;      
+    
+    dispatch_queue_t queue;
 }
 
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @end
