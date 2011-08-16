@@ -7,18 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZoomedImageView.h"
+#import "FGalleryViewController.h"
 
-@interface FlickrViewController : UIViewController
+@interface FlickrViewController : UIViewController<FGalleryViewControllerDelegate> 
 {
     NSMutableArray  *photoTitles;         // Titles of images
     NSMutableArray  *photoSmallImageData; // Image data (thumbnail)
     NSMutableArray  *photoURLsLargeImage; // URL to larger image
     
-    ZoomedImageView  *fullImageViewController;
     UIActivityIndicatorView *activityIndicator;      
     
     dispatch_queue_t queue;
+    
+    NSMutableArray *networkCaptions;
+    NSMutableArray *networkImages;
+    NSMutableArray *thumbImages;
+
+    FGalleryViewController *networkGallery;
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;

@@ -8,7 +8,6 @@
 
 #import "FlickrViewController.h"
 #import "JSON.h"
-#import "ZoomedImageView.h"
 #import "TEDxAlcatrazGlobal.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -40,24 +39,21 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 #pragma mark -
 #pragma mark Private Methods
 
-- (void) loadScrollView
-{
-    [scrollView setContentSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width, ceilf([photoSmallImageData count]/4 + 3)*60)];
-
-    for(int i = 0; i < [photoSmallImageData count]; i++)
-    {
-        dispatch_async(queue, ^{
-            NSData *imageData = [photoSmallImageData objectAtIndex:i];
-            UIImageView *imageView =  [[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]];
-            [imageView setFrame:CGRectMake(((i+4)%4 + 1)*space + ((i+4)%4*flickrImageWidth), space * (floorf(i/4) + 1) + flickrImageWidth * floorf(i/4), flickrImageWidth, flickrImageWidth)];
-            
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                [scrollView addSubview:imageView];
-            });
-        });
-    }
+- (IBAction)loadLargeImage:(id)sender{
+    
+    //UIButton* btn = (UIButton *) sender;
+    
+    networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+    [self.navigationController pushViewController:networkGallery animated:YES];
+    [networkGallery release];        
+    
+    /*
+    NSInteger eventId = btn.tag;
+    
+    if ([self.delegate respondsToSelector:@selector(loadEventDetail:)]) {
+        [self.delegate loadEventDetail:eventId];
+	}*/
 }
-                                                                                   
 
 /*-------------------------------------------------------------
  *
@@ -67,7 +63,7 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
     // Store incoming data into a string
 	NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    debug(@"CALLING:%@", jsonString);  
+    //debug(@"CALLING:%@", jsonString);  
     
     // Create a dictionary from the JSON string
 	NSDictionary *results = [jsonString JSONValue];
@@ -75,33 +71,52 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
     // Build an array from the dictionary for easy access to each entry
 	NSArray *photos = [[results objectForKey:@"photos"] objectForKey:@"photo"];
     
+    [scrollView setContentSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width, ceilf([photos count]/4 + 3)*60)];
+
     // Loop through each entry in the dictionary...
-	for (NSDictionary *photo in photos)
+	//for (NSDictionary *photo in photos)
+    for(int i = 0; i < [photos count]; i++)
     {
+        NSDictionary *photo = [photos objectAtIndex:i];
         // Get title of the image
 		NSString *title = [photo objectForKey:@"title"];
         
         // Save the title to the photo titles array
-		[photoTitles addObject:(title.length > 0 ? title : @"Untitled")];
+		[networkCaptions addObject:(title.length > 0 ? title : @"Untitled")];
 		
-        // Build the URL to where the image is stored (see the Flickr API)
-        // In the format http://farmX.static.flickr.com/server/id/secret
-        // Notice the "_s" which requests a "small" image 75 x 75 pixels
-		NSString *photoURLString = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_s.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
-        
+
         // The performance (scrolling) of the table will be much better if we
         // build an array of the image data here, and then add this data as
         // the cell.image value (see cellForRowAtIndexPath:)
-		[photoSmallImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]]];
+		//[photoSmallImageData addObject:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]]];
         
-        // Build and save the URL to the large image so we can zoom
-        // in on the image if requested
-		photoURLString = [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_m.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]];
-		[photoURLsLargeImage addObject:[NSURL URLWithString:photoURLString]];        
+        dispatch_async(queue, ^{
+            // Build the URL to where the image is stored (see the Flickr API)
+            // In the format http://farmX.static.flickr.com/server/id/secret
+            // Notice the "_s" which requests a "small" image 75 x 75 pixels
+            NSString *photoURLString = [[NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_s.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]] autorelease];
+            [thumbImages addObject:photoURLString];
+            
+            
+            // Build and save the URL to the large image so we can zoom
+            // in on the image if requested
+            NSString *largeUrl = [[NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_m.jpg", [photo objectForKey:@"farm"], [photo objectForKey:@"server"], [photo objectForKey:@"id"], [photo objectForKey:@"secret"]] autorelease];
+            [networkImages addObject:largeUrl];
+            
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:photoURLString]];
+            
+            UIImageView *imageView =  [[[UIImageView alloc] initWithImage:[UIImage imageWithData:imageData]] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, flickrImageWidth, flickrImageWidth)];
+            
+            UIButton *imageButton = [[[UIButton alloc] initWithFrame:CGRectMake(((i+4)%4 + 1)*space + ((i+4)%4*flickrImageWidth), space * (floorf(i/4) + 1) + flickrImageWidth * floorf(i/4), flickrImageWidth, flickrImageWidth)] autorelease];
+            [imageButton addSubview:imageView];
+            [imageButton addTarget:self action:@selector(loadLargeImage:) forControlEvents:UIControlEventTouchUpInside];
+
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [scrollView addSubview:imageButton];
+            });
+        });
 	}
-    
-    // Update the table with data
-    [self loadScrollView];
     
     // Stop the activity indicator
     [activityIndicator stopAnimating];
@@ -138,7 +153,8 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
     photoTitles = [[NSMutableArray alloc] init];
     photoSmallImageData = [[NSMutableArray alloc] init];
     photoURLsLargeImage = [[NSMutableArray alloc] init];
-        
+    thumbImages = [[NSMutableArray alloc] init];
+    networkImages = [[NSMutableArray alloc] init];
 	return self;
     
 }
@@ -178,6 +194,53 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
     [request release];
 }
 
+
+#pragma mark - FGalleryViewControllerDelegate Methods
+
+
+- (int)numberOfPhotosForPhotoGallery:(FGalleryViewController *)gallery
+{
+	return [networkImages count];
+}
+
+
+- (FGalleryPhotoSourceType)photoGallery:(FGalleryViewController *)gallery sourceTypeForPhotoAtIndex:(NSUInteger)index
+{
+    return FGalleryPhotoSourceTypeNetwork;
+}
+
+
+- (NSString*)photoGallery:(FGalleryViewController *)gallery captionForPhotoAtIndex:(NSUInteger)index
+{
+    NSString *caption;
+    caption = [networkCaptions objectAtIndex:index];
+	return caption;
+}
+
+- (NSString*)photoGallery:(FGalleryViewController *)gallery urlForPhotoSize:(FGalleryPhotoSize)size atIndex:(NSUInteger)index {
+    if(size == FGalleryPhotoSizeThumbnail)
+    {
+        return [thumbImages objectAtIndex:index];
+    }
+    else
+    {
+        return [networkImages objectAtIndex:index];
+    }
+}
+
+- (void)handleTrashButtonTouch:(id)sender {
+    // here we could remove images from our local array storage and tell the gallery to remove that image
+    // ex:
+    //[localGallery removeImageAtIndex:[localGallery currentIndex]];
+}
+
+
+- (void)handleEditCaptionButtonTouch:(id)sender {
+    // here we could implement some code to change the caption for a stored image
+}
+
+
+
 #pragma mark -
 #pragma mark Cleanup
 
@@ -190,11 +253,11 @@ NSString *const FlickrAPIKey = @"b48ec44427c1dc3327d14e31ab055b9b";
 	[photoTitles release];
 	[photoSmallImageData release];
     [photoURLsLargeImage release];
+    [networkCaptions release];
+    [thumbImages release];
+    [networkImages release];
     [activityIndicator release];
     
-    // Remove from view (and release)
-    if ([fullImageViewController superview])
-        [fullImageViewController removeFromSuperview];
     dispatch_release(queue);
 
 	[super dealloc];

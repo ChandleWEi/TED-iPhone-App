@@ -79,6 +79,11 @@
 		663B9B0512D209F800C75B08 /* WebViewControllerBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 663B9B0412D209F800C75B08 /* WebViewControllerBaseClass.m */; };
 		663B9B6612D20FE500C75B08 /* TEDxAlcatrazGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 663B9B6512D20FE500C75B08 /* TEDxAlcatrazGlobal.m */; };
 		668608E212D23ED5002A8A23 /* SpeakersResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 668608E112D23ED5002A8A23 /* SpeakersResultTableViewCell.m */; };
+		C8433AE613F9A2AA00089D53 /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = C8433AE113F9A2A900089D53 /* FGalleryPhoto.m */; };
+		C8433AE713F9A2AA00089D53 /* FGalleryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8433AE313F9A2A900089D53 /* FGalleryPhotoView.m */; };
+		C8433AE813F9A2AA00089D53 /* FGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8433AE513F9A2A900089D53 /* FGalleryViewController.m */; };
+		C8433AEC13F9BE4A00089D53 /* photo-gallery-right.png in Resources */ = {isa = PBXBuildFile; fileRef = C8433AEA13F9BE4A00089D53 /* photo-gallery-right.png */; };
+		C8433AED13F9BE4A00089D53 /* photo-gallery-left.png in Resources */ = {isa = PBXBuildFile; fileRef = C8433AEB13F9BE4A00089D53 /* photo-gallery-left.png */; };
 		C8D0231413F1C4B100966552 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D0231213F1C4B100966552 /* MoreViewController.m */; };
 		C8D0231513F1C4B100966552 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8D0231313F1C4B100966552 /* MoreViewController.xib */; };
 		C8D0231813F1C6F300966552 /* flickr_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D0231613F1C6F200966552 /* flickr_icon@2x.png */; };
@@ -87,7 +92,6 @@
 		C8D0231F13F1C79000966552 /* FlickrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8D0231D13F1C79000966552 /* FlickrViewController.xib */; };
 		C8D0232213F1CC8900966552 /* tweet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D0232013F1CC8900966552 /* tweet_icon.png */; };
 		C8D0232313F1CC8900966552 /* tweet_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D0232113F1CC8900966552 /* tweet_icon@2x.png */; };
-		C8D0232F13F1CD9100966552 /* ZoomedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D0232E13F1CD9100966552 /* ZoomedImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +198,14 @@
 		668608E012D23ED5002A8A23 /* SpeakersResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersResultTableViewCell.h; sourceTree = "<group>"; };
 		668608E112D23ED5002A8A23 /* SpeakersResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersResultTableViewCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TEDxAlcatraz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TEDxAlcatraz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C8433AE013F9A2A900089D53 /* FGalleryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryPhoto.h; sourceTree = "<group>"; };
+		C8433AE113F9A2A900089D53 /* FGalleryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryPhoto.m; sourceTree = "<group>"; };
+		C8433AE213F9A2A900089D53 /* FGalleryPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryPhotoView.h; sourceTree = "<group>"; };
+		C8433AE313F9A2A900089D53 /* FGalleryPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryPhotoView.m; sourceTree = "<group>"; };
+		C8433AE413F9A2A900089D53 /* FGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryViewController.h; sourceTree = "<group>"; };
+		C8433AE513F9A2A900089D53 /* FGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryViewController.m; sourceTree = "<group>"; };
+		C8433AEA13F9BE4A00089D53 /* photo-gallery-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-gallery-right.png"; sourceTree = "<group>"; };
+		C8433AEB13F9BE4A00089D53 /* photo-gallery-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-gallery-left.png"; sourceTree = "<group>"; };
 		C8D0231113F1C4B100966552 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		C8D0231213F1C4B100966552 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		C8D0231313F1C4B100966552 /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
@@ -204,8 +216,6 @@
 		C8D0231D13F1C79000966552 /* FlickrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlickrViewController.xib; sourceTree = "<group>"; };
 		C8D0232013F1CC8900966552 /* tweet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet_icon.png; sourceTree = "<group>"; };
 		C8D0232113F1CC8900966552 /* tweet_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tweet_icon@2x.png"; sourceTree = "<group>"; };
-		C8D0232D13F1CD9100966552 /* ZoomedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomedImageView.h; sourceTree = "<group>"; };
-		C8D0232E13F1CD9100966552 /* ZoomedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomedImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,6 +465,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8433AEA13F9BE4A00089D53 /* photo-gallery-right.png */,
+				C8433AEB13F9BE4A00089D53 /* photo-gallery-left.png */,
 				1F3C84BB1316E0B000472A43 /* default_user.png */,
 				1FCCA8F1131457E300DD24B6 /* Menu Icons */,
 				1F34FBCE130DEBBE00032D3F /* clock.png */,
@@ -515,8 +527,12 @@
 		C8D0231A13F1C77C00966552 /* Flickr */ = {
 			isa = PBXGroup;
 			children = (
-				C8D0232D13F1CD9100966552 /* ZoomedImageView.h */,
-				C8D0232E13F1CD9100966552 /* ZoomedImageView.m */,
+				C8433AE013F9A2A900089D53 /* FGalleryPhoto.h */,
+				C8433AE113F9A2A900089D53 /* FGalleryPhoto.m */,
+				C8433AE213F9A2A900089D53 /* FGalleryPhotoView.h */,
+				C8433AE313F9A2A900089D53 /* FGalleryPhotoView.m */,
+				C8433AE413F9A2A900089D53 /* FGalleryViewController.h */,
+				C8433AE513F9A2A900089D53 /* FGalleryViewController.m */,
 				C8D0231B13F1C79000966552 /* FlickrViewController.h */,
 				C8D0231C13F1C79000966552 /* FlickrViewController.m */,
 				C8D0231D13F1C79000966552 /* FlickrViewController.xib */,
@@ -618,6 +634,8 @@
 				C8D0231F13F1C79000966552 /* FlickrViewController.xib in Resources */,
 				C8D0232213F1CC8900966552 /* tweet_icon.png in Resources */,
 				C8D0232313F1CC8900966552 /* tweet_icon@2x.png in Resources */,
+				C8433AEC13F9BE4A00089D53 /* photo-gallery-right.png in Resources */,
+				C8433AED13F9BE4A00089D53 /* photo-gallery-left.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +674,9 @@
 				1F11E19513BE4ACF0017BFD3 /* Reachability.m in Sources */,
 				C8D0231413F1C4B100966552 /* MoreViewController.m in Sources */,
 				C8D0231E13F1C79000966552 /* FlickrViewController.m in Sources */,
-				C8D0232F13F1CD9100966552 /* ZoomedImageView.m in Sources */,
+				C8433AE613F9A2AA00089D53 /* FGalleryPhoto.m in Sources */,
+				C8433AE713F9A2AA00089D53 /* FGalleryPhotoView.m in Sources */,
+				C8433AE813F9A2AA00089D53 /* FGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
