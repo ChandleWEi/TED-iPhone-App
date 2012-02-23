@@ -6,6 +6,26 @@
 	<array>
 		<dict>
 			<key>Address</key>
+			<string>300 E. Ocean Boulevard Long Beach, CA 90802</string>
+			<key>EmailAddress</key>
+			<string>peter@catch.com</string>
+			<key>EventHashTag</key>
+			<string>#TED2012</string>
+			<key>EventId</key>
+			<integer>24</integer>
+			<key>Latitude</key>
+			<real>33.765003</real>
+			<key>Longitude</key>
+			<real>-118.189523</real>
+			<key>Name</key>
+			<string>Long Beach Convention and Entertainment Center</string>
+			<key>SubEventId</key>
+			<string>25</string>
+			<key>TEDConference</key>
+			<string>TED2012</string>
+		</dict>
+		<dict>
+			<key>Address</key>
 			<string>150 Morrison Street Edinburgh, Midlothian EH3 8EE, United Kingdom </string>
 			<key>EmailAddress</key>
 			<string>peter@catch.com</string>
@@ -48,7 +68,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>TEDGlobal</string>
+	<string>TED2012</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
